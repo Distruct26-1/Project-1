@@ -12,7 +12,26 @@
 public class Sorter {
 
     public int comparisons;
-    protected int[] list;
+
+    public int shakerSort(int[] list) {
+        comparisons = 0;
+        return comparisons;
+    }
+
+    public int quickSort(int[] list) {
+        comparisons = 0;
+        return comparisons;
+    }
+
+    public int mergeSort(int[] list) {
+        comparisons = 0;
+        return comparisons;
+    }
+
+    public int heapSort(int[] list) {
+        comparisons = 0;
+        return comparisons;
+    }
 
     /**
      * wrapper around >, that increments comparisons
@@ -20,7 +39,7 @@ public class Sorter {
      * @param b num to compare to
      * @return whether a > b
      */
-    protected boolean greaterThan(int a, int b) {
+    private boolean greaterThan(int a, int b) {
         comparisons++;
         if(a > b) return true;
         return false;
@@ -32,7 +51,7 @@ public class Sorter {
      * @param b num to compare to
      * @return whether a < b
      */
-    protected boolean lessThan(int a, int b) {
+    private boolean lessThan(int a, int b) {
         comparisons++;
         if(a < b) return true;
         return false;
@@ -45,34 +64,9 @@ public class Sorter {
      * @param a index of first number to be swapped
      * @param b index of second number to be swapped
      */
-    protected void swap(int[] list, int a, int b) {
+    private void swap(int[] list, int a, int b) {
         int thirdHand = list[b];
         list[b] = list[a];
         list[a] = thirdHand;
-    }
-
-    /**
-     * actions that should be desirable on every sorting
-     * implementation; is called by every subclass w/ `super`.
-     *
-     * Note that `unsorted` is copied, so passing an unsorted list
-     * to several `Sorter`s is safe.
-     * @param unsorted list to be sorted
-     */
-    protected Sorter(int[] unsorted) {
-        comparisons = 0;
-        list = unsorted.clone();
-        sort(list);
-    }
-
-    /**
-     * useless function. Exists to be overwritten by subclasses,
-     * but for the constructor to call `sort` on their instantiation,
-     * there must be a base method to fall back on.
-     * @param list the list to ostensibly be sorted
-     * @return the input list
-     */
-    protected int[] sort(int[] list) {
-        return list;
     }
 }

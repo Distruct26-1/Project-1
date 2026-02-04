@@ -9,39 +9,62 @@
  * Kathleen Monahan
  */
 
-import java.util.Arrays;
 import java.util.function.Function;
 
-public class Tester<T extends Sorter> {
+public class Tester {
 
-    static int outliers = 10;
-    private Function<int[], T> constructor;
-    public Integer[] bestCases;
-    public Integer[] worstCases;
+    static int outlierCount = 10;
+    private Function<int[], Integer> algorithm;
+    public String algorithmName;
+    public Result[] bestCases;
+    public Result[] worstCases;
+    public double average;
 
-    public Tester(Function<int[], T> constructor) {
-        bestCases = new Integer[10];
-        worstCases = new Integer[10];
+    public Tester(Function<int[], Integer> algorithm, String algorithmName) {
+        bestCases = new Result[outlierCount];
+        worstCases = new Result[outlierCount];
+        average = 0;
 
-        Arrays.fill(bestCases, Integer.MAX_VALUE);
-        Arrays.fill(worstCases, Integer.MIN_VALUE);
-
-        this.constructor = constructor;
+        this.algorithm = algorithm;
+        this.algorithmName = algorithmName;
     }
 
     /**
      * Sorts using the instance's associated algorithm.
+     * Updates the running average, and if the results 
+     * are particularly good or bad, stores the data in
+     * a list of outliers.
      * @param list the list to be sorted
-     * @return the Sorter object post-sort
+     * @return the comparisons used by the algorithm
      */
-    private T benchmark(int[] list) {
-        T sorter = constructor.apply(list);
-        
-        return sorter;
+    private int benchmark(int[] list, int numPrevBenchmarks) {
+        int comparisons = algorithm.apply(list.clone());
+        return comparisons;
     }
 
     public static void main(String[] args) {
-    
+        // In this function is some minimal code to demonstrate
+        // the way that the different parts of the codebase are
+        // intended to come together. 
+        int[] integerList = generateArray(3);
+        Integer permutationIndex = 1;
+
+        Sorter sorter = new Sorter();
+
+        Tester[] testers = {
+            new Tester(sorter::shakerSort, "Shaker sort"),
+            new Tester(sorter::quickSort, "Quick sort"),
+        };
+
+        for(Tester tester : testers) {
+            permute(permutationIndex, integerList);
+
+            int comparisons = tester.benchmark(integerList, permutationIndex);
+            String niceList = printArray(integerList);
+            String name = tester.algorithmName;
+            System.out.printf("Sorted list %s in %d comparisons with %s!\n",
+                niceList, comparisons, name);
+        }
     }
 
     /**
@@ -58,7 +81,44 @@ public class Tester<T extends Sorter> {
         return output;
     }
 
+    /**
+     * Prints the array as a space-separated string.
+     * Useful for debugging mostly, I think.
+     * @param array array to be converted
+     * @return stringified version of array
+     */
+    private static String printArray(int[] array) {
+        String output = "";
+        for(int num : array) {
+            output += String.valueOf(num);
+        }
+        return output;
+    }
+
     private static int[] permute(int iteration, int[] list) {
+        iteration++;
         return list;
+    }
+}
+
+/**
+ * Container to bundle the results of a sort together,
+ * as per the instructions. AlgorithmName isn't included
+ * as a parameter, because Result objects are supposed to
+ * be stored *within* Tester objects, which already have an
+ * associated algorithm type.
+ */
+class Result implements Comparable<Result> {
+    int[] list;
+    int operations;
+
+    private Result(int[] list, int operations) {
+        this.list = list;
+        this.operations = operations;
+    }
+
+    @Override
+    public int compareTo(Result other) {
+        return Integer.compare(this.operations, other.operations);
     }
 }
