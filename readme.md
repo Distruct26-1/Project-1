@@ -20,4 +20,4 @@ As a part of CS2430, we're tasked to implement several sorting algorithms, along
 
 The project has been tested to work on Java 25, but earlier versions may be supported.
 
-Run `java Tester.java` to run the automated benchmarking.
+Run `java src/Tester.java` to run the automated benchmarking.
