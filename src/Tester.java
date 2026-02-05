@@ -9,6 +9,8 @@
  * Kathleen Monahan
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.Function;
 
 public class Tester {
@@ -39,32 +41,81 @@ public class Tester {
      */
     private int benchmark(int[] list, int numPrevBenchmarks) {
         int comparisons = algorithm.apply(list.clone());
+
+        // TODO: update best/worst case lists
+
+        // TODO: update running average
+        // TODO: maybe it should be a running sum, and the division
+        //      only happens at the end, based on permutationIndex or smth?
+
         return comparisons;
     }
 
+    /**
+     * The driver for the testing. Doesn't do much aside from
+     * parse CLI args and call testForArray
+     * @param args CLI args (integers only)
+     */
     public static void main(String[] args) {
-        // In this function is some minimal code to demonstrate
-        // the way that the different parts of the codebase are
-        // intended to come together. 
-        int[] integerList = generateArray(3);
+        ArrayList<Integer> arrayLengths;
+        if(args.length > 1) {
+            // parse integers from args, use that
+            arrayLengths = new ArrayList<>();
+            // TODO: get integers from args somehow (Scanner?)
+        } else {
+            // default array lengths.
+            arrayLengths = new ArrayList<Integer>(Arrays.asList(4, 6, 8));
+        }
+
+        for(int arrayLength : arrayLengths) {
+            int[] consecutiveArray = generateArray(arrayLength);
+            testForArray(consecutiveArray);
+        }
+    }
+
+    /**
+     * The bulk of the testing. Creates a tester for each algorithm,
+     * and runs `benchmark` on each of them for every permutation of
+     * the given integerList.
+     * @param integerList original list to be permuted. does not have
+     *      to be consecutive integers.
+     */
+    private static void testForArray(int[] integerList) {
         Integer permutationIndex = 1;
 
+        // only one sorter is needed throughout. Algorithms
+        // are expected to reset their own comparison counter.
         Sorter sorter = new Sorter();
 
+        // list of all testers to be iterated through.
         Tester[] testers = {
             new Tester(sorter::shakerSort, "Shaker sort"),
             new Tester(sorter::quickSort, "Quick sort"),
+            new Tester(sorter::mergeSort, "Merge sort"),
+            new Tester(sorter::heapSort, "Heap sort"),
         };
 
-        for(Tester tester : testers) {
-            permute(permutationIndex, integerList);
-
-            int comparisons = tester.benchmark(integerList, permutationIndex);
-            String niceList = printArray(integerList);
-            String name = tester.algorithmName;
-            System.out.printf("Sorted list %s in %d comparisons with %s!\n",
-                niceList, comparisons, name);
+        int totalRunNums = factorial(integerList.length);
+        while(permutationIndex <= totalRunNums) {
+            for(Tester tester : testers) {
+                // for the current permutation, sorts it
+                // using every sorting algorithm
+                permute(permutationIndex, integerList);
+                tester.benchmark(integerList, permutationIndex);
+            }
         }
+    }
+
+    /**
+     * Basic factorial function to calculate the
+     * number of permutations. Recursive.
+     * @param num input to factorial function
+     * @return num!
+     */
+    private static int factorial(int num) {
+        if(num == 1) return 1;
+        if(num == 2) return 1;
+        return num * factorial(num - 1);
     }
 
     /**
@@ -88,6 +139,8 @@ public class Tester {
      * @return stringified version of array
      */
     private static String printArray(int[] array) {
+        // TODO: does this belong inside Result? When would it
+        //      be called outside of testing or toString (for results)
         String output = "";
         for(int num : array) {
             output += String.valueOf(num);
