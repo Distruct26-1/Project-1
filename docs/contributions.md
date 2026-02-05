@@ -1,4 +1,8 @@
-# Dallin Yauney
+# Overall project roles
 
-- setup Discord & Github
-- setup project framework
+## Dallin Yauney
+
+**Implementation lead**:
+
+- Project structure
+- Git health
