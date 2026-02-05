@@ -58,10 +58,27 @@ public class Tester {
      */
     public static void main(String[] args) {
         ArrayList<Integer> arrayLengths;
-        if(args.length > 1) {
+        if(args.length > 0) {
             // parse integers from args, use that
             arrayLengths = new ArrayList<>();
-            // TODO: get integers from args somehow (Scanner?)
+            for(String arg : args) {
+                Integer nextArg;
+                
+                try { // Handle if arg isn't integer
+                    nextArg = Integer.valueOf(arg);
+                } catch (Exception e) {
+                    System.err.println("ERROR: invalid argument. Not an integer");
+                    return;
+                }
+
+                // Handle if arg is too small
+                if(nextArg < 1) {
+                    System.err.println("ERROR: invalid argument. Integers must be positive.");
+                    return;
+                }
+                
+                arrayLengths.add(nextArg);
+            }
         } else {
             // default array lengths.
             arrayLengths = new ArrayList<Integer>(Arrays.asList(4, 6, 8));
