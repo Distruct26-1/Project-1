@@ -11,7 +11,7 @@
 ### Scaffolding
 
 Assignee: Dallin
-Status: Incomplete
+Status: Done (c640b4a)
 
 ### Permutation generator
 
@@ -20,7 +20,7 @@ Status: Incomplete
 
 ### Tester
 
-Assignee: _____
+Assignee: Dallin
 Status: Incomplete
 
 ### JUnit Test Case
@@ -30,7 +30,7 @@ Status: Incomplete
 
 ### Mergesort
 
-Assignee: _____
+Assignee: Dallin
 Status: Incomplete
 
 ### Quicksort
