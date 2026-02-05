@@ -15,12 +15,17 @@ Status: Incomplete
 
 ### Permutation generator
 
-Assignee: _____
+Assignee: KM
 Status: Incomplete
 
 ### Tester
 
 Assignee: _____
+Status: Incomplete
+
+### JUnit Test Case
+
+Assignee: KM
 Status: Incomplete
 
 ### Sorter superclass
@@ -35,12 +40,12 @@ Status: Incomplete
 
 ### Quicksort
 
-Assignee: _____
+Assignee: KM
 Status: Incomplete
 
 ### Shaker sort
 
-Assignee: _____
+Assignee: KM 
 Status: Incomplete
 
 ### Heapsort
