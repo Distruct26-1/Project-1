@@ -28,11 +28,6 @@ Status: Incomplete
 Assignee: KM
 Status: Incomplete
 
-### Sorter superclass
-
-Assignee: _____
-Status: Incomplete
-
 ### Mergesort
 
 Assignee: _____
