@@ -55,3 +55,7 @@ This means that creating a new sorting algorithm to be tracked would be as easy 
 ### Function objects
 
 As mentioned above, this project uses function references, aka methods as objects. This is through the double colon syntax (aka `sorter::bogoSort`) and is important because there's no other way to describe a function for one part of code, only for another part of code to eventually call it. This is what we do when creating a Tester object: it creates some lists to track the best/worst cases of some function, but it doesn't know how to use the function to sort & benchmark unless we can describe the function without calling it. Calling the function would only give the return type, usually `int`, to the Tester object, which isn't what we want.
+
+### Command-line arguments
+
+This isn't required per se, but I thought it would be nice to have a more accessible way to determine what lengths of arrays get tested. Instead of going through the Tester code and finding the one line in possibly hundreds that's responsible for the array lengths, someone can just specify them from the command line. Much friendlier for outside users, and simpler as well for the developers, who are likely to change the list lengths a lot throughout the project to test one thing or another.
