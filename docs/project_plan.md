@@ -40,7 +40,7 @@ Status: Incomplete
 
 ### Shaker sort
 
-Assignee: KM 
+Assignee: KM
 Status: Incomplete
 
 ### Heapsort
