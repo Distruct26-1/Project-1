@@ -1,7 +1,7 @@
 /**
  * Programming Project 1 - Spring 2026
  * CSIS 2430 Section 2
- * 
+ *
  * Group 3:
  * Agnes Braz Franco
  * Christian Taylor
@@ -41,10 +41,10 @@ public class Sorter {
      */
     private boolean greaterThan(int a, int b) {
         comparisons++;
-        if(a > b) return true;
+        if (a > b) return true;
         return false;
     }
-    
+
     /**
      * wrapper around <, that increments comparisons
      * @param a first num
@@ -53,7 +53,7 @@ public class Sorter {
      */
     private boolean lessThan(int a, int b) {
         comparisons++;
-        if(a < b) return true;
+        if (a < b) return true;
         return false;
     }
 

@@ -1,7 +1,7 @@
 /**
  * Programming Project 1 - Spring 2026
  * CSIS 2430 Section 2
- * 
+ *
  * Group 3:
  * Agnes Braz Franco
  * Christian Taylor
@@ -33,7 +33,7 @@ public class Tester {
 
     /**
      * Sorts using the instance's associated algorithm.
-     * Updates the running average, and if the results 
+     * Updates the running average, and if the results
      * are particularly good or bad, stores the data in
      * a list of outliers.
      * @param list the list to be sorted
@@ -58,25 +58,30 @@ public class Tester {
      */
     public static void main(String[] args) {
         ArrayList<Integer> arrayLengths;
-        if(args.length > 0) {
+        if (args.length > 0) {
             // parse integers from args, use that
             arrayLengths = new ArrayList<>();
-            for(String arg : args) {
+            for (String arg : args) {
                 Integer nextArg;
-                
-                try { // Handle if arg isn't integer
+
+                try {
+                    // Handle if arg isn't integer
                     nextArg = Integer.valueOf(arg);
                 } catch (Exception e) {
-                    System.err.println("ERROR: invalid argument. Not an integer");
+                    System.err.println(
+                        "ERROR: invalid argument. Not an integer"
+                    );
                     return;
                 }
 
                 // Handle if arg is too small
-                if(nextArg < 1) {
-                    System.err.println("ERROR: invalid argument. Integers must be positive.");
+                if (nextArg < 1) {
+                    System.err.println(
+                        "ERROR: invalid argument. Integers must be positive."
+                    );
                     return;
                 }
-                
+
                 arrayLengths.add(nextArg);
             }
         } else {
@@ -84,7 +89,7 @@ public class Tester {
             arrayLengths = new ArrayList<Integer>(Arrays.asList(4, 6, 8));
         }
 
-        for(int arrayLength : arrayLengths) {
+        for (int arrayLength : arrayLengths) {
             int[] consecutiveArray = generateArray(arrayLength);
             testForArray(consecutiveArray);
         }
@@ -113,8 +118,8 @@ public class Tester {
         };
 
         int totalRunNums = factorial(integerList.length);
-        while(permutationIndex <= totalRunNums) {
-            for(Tester tester : testers) {
+        while (permutationIndex <= totalRunNums) {
+            for (Tester tester : testers) {
                 // for the current permutation, sorts it
                 // using every sorting algorithm
                 permute(permutationIndex, integerList);
@@ -130,8 +135,8 @@ public class Tester {
      * @return num!
      */
     private static int factorial(int num) {
-        if(num == 1) return 1;
-        if(num == 2) return 1;
+        if (num == 1) return 1;
+        if (num == 2) return 1;
         return num * factorial(num - 1);
     }
 
@@ -143,7 +148,7 @@ public class Tester {
      */
     private static int[] generateArray(int size) {
         int[] output = new int[size];
-        for(int index=0; index < size; index++) {
+        for (int index = 0; index < size; index++) {
             output[index] = index + 1;
         }
         return output;
@@ -159,7 +164,7 @@ public class Tester {
         // TODO: does this belong inside Result? When would it
         //      be called outside of testing or toString (for results)
         String output = "";
-        for(int num : array) {
+        for (int num : array) {
             output += String.valueOf(num);
         }
         return output;
@@ -179,6 +184,7 @@ public class Tester {
  * associated algorithm type.
  */
 class Result implements Comparable<Result> {
+
     int[] list;
     int operations;
 
