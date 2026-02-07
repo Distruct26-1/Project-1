@@ -133,7 +133,7 @@ public class Tester {
 
         for (int arrayLength : arrayLengths) {
             int[] consecutiveArray = generateArray(arrayLength);
-            testForArray(consecutiveArray);
+            testForBaseArray(consecutiveArray);
         }
     }
 
@@ -144,8 +144,8 @@ public class Tester {
      * @param integerList original list to be permuted. does not have
      *      to be consecutive integers.
      */
-    private static void testForArray(int[] integerList) {
-        Integer permutationIndex = 1;
+    private static void testForBaseArray(int[] integerList) {
+        int permutationIndex = 1;
 
         // only one sorter is needed throughout. Algorithms
         // are expected to reset their own comparison counter.
@@ -161,12 +161,30 @@ public class Tester {
 
         int totalRunNums = factorial(integerList.length);
         while (permutationIndex <= totalRunNums) {
+            permute(permutationIndex, integerList);
             for (Tester tester : testers) {
                 // for the current permutation, sorts it
                 // using every sorting algorithm
-                permute(permutationIndex, integerList);
                 tester.benchmark(integerList, permutationIndex);
             }
+            permutationIndex++;
+        }
+
+        // print out results at the end
+        for (Tester tester : testers) {
+            System.out.printf(
+                "\n\n- - - - - - %s - - - - - -\n",
+                tester.algorithmName
+            );
+            System.out.printf("Average comparisons: %s\n", tester.average);
+            System.out.printf(
+                "Best cases:  %s\n",
+                printArray(tester.bestCases)
+            );
+            System.out.printf(
+                "Worst cases: %s\n",
+                printArray(tester.worstCases)
+            );
         }
     }
 
@@ -178,7 +196,7 @@ public class Tester {
      */
     private static int factorial(int num) {
         if (num == 1) return 1;
-        if (num == 2) return 1;
+        if (num == 2) return 2;
         return num * factorial(num - 1);
     }
 
@@ -202,17 +220,17 @@ public class Tester {
      * @param array array to be converted
      * @return stringified version of array
      */
-    private static String printArray(int[] array) {
-        // TODO: does this belong inside Result? When would it
-        //      be called outside of testing or toString (for results)
-        String output = "";
-        for (int num : array) {
-            output += String.valueOf(num);
+    private static String printArray(Result[] array) {
+        String output = "[ ";
+        for (Result result : array) {
+            output += String.valueOf(result.operations);
+            output += " ";
         }
+        output += "]";
         return output;
     }
 
-    private static int[] permute(int iteration, int[] list) {
+    private static int[] permute(Integer iteration, int[] list) {
         iteration++;
         return list;
     }
