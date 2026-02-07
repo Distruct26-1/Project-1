@@ -11,6 +11,7 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Tester {
@@ -37,18 +38,59 @@ public class Tester {
      * are particularly good or bad, stores the data in
      * a list of outliers.
      * @param list the list to be sorted
+     * @param numPrevBenchmarks number of previous benchmarks
+     *      (1 if it's the second benchmark, 23 if it's the 24th...)
      * @return the comparisons used by the algorithm
      */
     private int benchmark(int[] list, int numPrevBenchmarks) {
         int comparisons = algorithm.apply(list.clone());
+        Result result = new Result(list, comparisons);
 
-        // TODO: update best/worst case lists
+        sortIntoList(
+            bestCases,
+            result,
+            (result2, index) -> bestCases[index].compareTo(result2) > 0
+        );
+        sortIntoList(
+            worstCases,
+            result,
+            (result2, index) -> worstCases[index].compareTo(result2) < 0
+        );
 
-        // TODO: update running average
-        // TODO: maybe it should be a running sum, and the division
-        //      only happens at the end, based on permutationIndex or smth?
-
+        average = average + (comparisons - average) / numPrevBenchmarks;
         return comparisons;
+    }
+
+    /**
+     * helper function to sort a new result into a list,
+     * if it's small/big enough to belong in the list.
+     * Works for both ascending and descending lists.
+     * @param list the list to insert result into
+     * @param result the result to be inserted into
+     * @param comparison lambda determining how the items should
+     *       be sorted. This is what makes it work for best/worst
+     *       cases at the same time.
+     */
+    private void sortIntoList(
+        Result[] list,
+        Result result,
+        BiFunction<Result, Integer, Boolean> comparison
+    ) {
+        if (list[0] == null || comparison.apply(result, 0)) {
+            list[0] = result;
+            for (int next = 1; next < outlierCount; next++) {
+                if (list[next] == null || comparison.apply(result, next)) {
+                    // swap result with next item
+                    Result thirdHand = list[next - 1];
+                    list[next - 1] = list[next];
+                    list[next] = thirdHand;
+                } else {
+                    // if result is no longer bigger/smaller than
+                    // the next one, it has been sorted.
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -188,7 +230,7 @@ class Result implements Comparable<Result> {
     int[] list;
     int operations;
 
-    private Result(int[] list, int operations) {
+    Result(int[] list, int operations) {
         this.list = list;
         this.operations = operations;
     }
