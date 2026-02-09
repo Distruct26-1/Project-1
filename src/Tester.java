@@ -46,7 +46,8 @@ public class Tester {
         // In this function is some minimal code to demonstrate
         // the way that the different parts of the codebase are
         // intended to come together. 
-        int[] integerList = generateArray(3);
+        // int[] integerList = generateArray(3);
+        int[] integerList = {1, 7, 4, 3, 5, 8, 6, 2};
         Integer permutationIndex = 1;
 
         Sorter sorter = new Sorter();
@@ -56,15 +57,19 @@ public class Tester {
             new Tester(sorter::quickSort, "Quick sort"),
         };
 
-        for(Tester tester : testers) {
-            permute(permutationIndex, integerList);
+        // for(Tester tester : testers) {
+        //     permute(permutationIndex, integerList);
 
-            int comparisons = tester.benchmark(integerList, permutationIndex);
-            String niceList = printArray(integerList);
-            String name = tester.algorithmName;
-            System.out.printf("Sorted list %s in %d comparisons with %s!\n",
-                niceList, comparisons, name);
-        }
+        //     int comparisons = tester.benchmark(integerList, permutationIndex);
+        //     String niceList = printArray(integerList);
+        //     String name = tester.algorithmName;
+        //     System.out.printf("Sorted list %s in %d comparisons with %s!\n",
+        //         niceList, comparisons, name);
+        // }
+
+        int comparisons = sorter.mergeSort(integerList);
+        System.out.printf("Sorted list: %s in %d\n", printArray(integerList), comparisons);
+
     }
 
     /**
@@ -87,7 +92,7 @@ public class Tester {
      * @param array array to be converted
      * @return stringified version of array
      */
-    private static String printArray(int[] array) {
+    public static String printArray(int[] array) {
         String output = "";
         for(int num : array) {
             output += String.valueOf(num);
