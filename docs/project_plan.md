@@ -65,7 +65,7 @@ Status: Incomplete
 
 ### Final report
 
-Assignee: _____
+Assignee: Agnes
 Status: Incomplete
 
 ### Video report
