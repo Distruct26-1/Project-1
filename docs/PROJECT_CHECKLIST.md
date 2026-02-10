@@ -1,15 +1,15 @@
 # Programming Project 1: Algorithm Performance_PLO-CS-3 – Team Checklist
 
 ## 1. Team Organization
-- [ ] Confirm team members and roles *(Cristian’s role still needs to be defined)*
+- [X] Confirm team members and roles
 - [ ] Document roles in /docs Project Plan
-- [ ] Create and maintain CONTRIBUTIONS.md
+- [X] Create and maintain CONTRIBUTIONS.md
 - [X] Define day/time for team meetings
-- [ ] Submit Weekly Status Reports
+- [x] Submit Weekly Status Reports
 
 ## 2. Repository & Documentation Setup
 - [X] Create shared repository (GitHub)
-- [ ] Give instructor viewer access before checkpoint
+- [x] Give instructor viewer access before checkpoint (Public)
 - [ ] Create /docs folder with Project Plan and at least two design artifacts
 - [ ] Ensure evidence links for completed tasks (issues, commits, PRs)
 
