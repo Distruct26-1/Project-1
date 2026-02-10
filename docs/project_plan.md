@@ -65,10 +65,10 @@ Status: Incomplete
 
 ### Final report
 
-Assignee: _____
+Assignee: Agnes
 Status: Incomplete
 
 ### Video report
 
-Assignee: _____
+Assignee: Cristian
 Status: Incomplete
