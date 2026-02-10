@@ -15,6 +15,9 @@ public class Sorter {
 	 * left, checking each value is greater or less then itself, swapping where
 	 * applicable.
 	 * 
+	 * Modified from GeeksforGeeks (Cocktail Sort)
+	 * https://www.geeksforgeeks.org/cocktail-sort/
+	 * 
 	 * @param list array to be sorted
 	 * @return the number of comparisons that were done to sort this array
 	 * @author KatM
@@ -24,19 +27,17 @@ public class Sorter {
 		boolean swap = true;
 		int begin = 0;
 		int end = list.length - 1;
-		int comparisons = 0;
+		comparisons = 0;
 
 		while (swap) {
 			swap = false;
-			for (int i = begin; i < end; i++) {
-				comparisons++;
-				if (list[i] > list[i + 1]) {
+			for (int i = begin; i < end; i++)
+				if (greaterThan(list[i], list[i + 1])) {
 					int temp = list[i];
 					list[i] = list[i + 1];
 					list[i + 1] = temp;
 					swap = true;
 				}
-			}
 
 			if (!swap)
 				break;
@@ -44,7 +45,7 @@ public class Sorter {
 			end--;
 
 			for (int i = end; i > begin; i--) {
-				if (list[i] < list[i - 1]) {
+				if (lessThan(list[i], list[i - 1])) {
 					int temp = list[i];
 					list[i] = list[i - 1];
 					list[i - 1] = temp;
@@ -53,14 +54,61 @@ public class Sorter {
 			}
 			begin++;
 		}
+		return comparisons;
+	}
+	
+	/**
+	 * Quicksort using the first element as pivot. 
+	 * Partitions array so elements smaller than the chosen pivot are on the lhs
+	 * and elements larger are on the rhs. Recursively sorts each partition. 
+	 * 
+	 * Modified from Sedgewick's algorithm for quicksort. 
+	 * Using a fixed pivot and unshuffled array which can in some cases
+	 * result in quadratic results on sorted data but for the scope of
+	 * this assignment, it was more important to have consistancy. 
+	 * 
+	 * @param list array to be sorted
+	 * @return number of comparisons
+	 * @author KatM
+	 */
+	public int quickSort(int[] list) {
+		comparisons = 0;
+		sort(list, 0, list.length - 1);
 
-		return comparisons;  //check in JUNIT
+		return comparisons;
+	}
+
+	private void sort(int[] list, int lo, int hi) {
+		if (hi <= lo)
+			return; // just ends
+		int j = partition(list, lo, hi);
+		sort(list, lo, j - 1); // sort left
+		sort(list, j + 1, hi); // sort right
 
 	}
 
-	public int quickSort(int[] list) {
-		comparisons = 0;
-		return comparisons;
+	private int partition(int[] list, int lo, int hi) {
+		int i = lo;
+		int j = hi + 1;
+		int v = list[lo];
+
+		while (true) {
+			while (lessThan(list[++i], v)) {
+				if (i == hi)
+					break;
+			}
+			while (lessThan(v, list[--j])) {
+				if (j == lo)
+					break;
+			}
+			if (i >= j) {
+				break;
+			}
+			swap(list, i, j);
+
+		}
+		swap(list, lo, j);
+		return j;
 	}
 
 	public int mergeSort(int[] list) {
