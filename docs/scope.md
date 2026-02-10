@@ -12,4 +12,4 @@ This project seeks to be extensible. Adding another sorting algorithm, while not
 
 ## What it avoids
 
-This project will not solve global warming. This project will not cure cancer. This project won't even find the median time for a sorting algorithm. This project performs the bare minimum required by the docs, except when we feel like implementing nice-to-haves, such as code quality and output formatting.
+This project will not solve global warming. This project will not cure cancer. This project won't even find the median time for a sorting algorithm. This project performs the bare minimum required by the docs, except when we feel like implementing nice-to-haves, such as code quality, output formatting, and command line arguments.
