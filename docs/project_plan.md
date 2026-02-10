@@ -70,5 +70,5 @@ Status: Incomplete
 
 ### Video report
 
-Assignee: _____
+Assignee: Cristian
 Status: Incomplete
