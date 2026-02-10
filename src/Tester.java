@@ -87,7 +87,7 @@ public class Tester {
      * @param array array to be converted
      * @return stringified version of array
      */
-    private static String printArray(int[] array) {
+    public static String printArray(int[] array) {
         String output = "";
         for(int num : array) {
             output += String.valueOf(num);
