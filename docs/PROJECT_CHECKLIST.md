@@ -10,7 +10,7 @@
 ## 2. Repository & Documentation Setup
 - [X] Create shared repository (GitHub)
 - [x] Give instructor viewer access before checkpoint (Public)
-- [ ] Create /docs folder with Project Plan and at least two design artifacts
+- [X] Create /docs folder with Project Plan and at least two design artifacts (design_notes.md; project_plan.md; scope.md)
 - [ ] Ensure evidence links for completed tasks (issues, commits, PRs)
 
 ## 3. Programming Progress Tracking
