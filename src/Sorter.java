@@ -23,26 +23,36 @@ public class Sorter {
         return comparisons;
     }
 
+    /**
+     * "Runner" for mergesort. Calls mergeSortRecursive.
+     * Implementation for mergeSort inspired by Wikipedia.
+     * @param list
+     * @return
+     */
     public int mergeSort(int[] list) {
         comparisons = 0;
         list = mergeSortRecursive(list);
         return comparisons;
     }
 
+    /**
+     * Primary method for mergeSort. Splits
+     * its input in two, and recurses on each half.
+     * Returns `list` if it's small, and zips each half
+     * back together.
+     * @param list the list to sort
+     * @return the sorted version of `list`
+     */
     private int[] mergeSortRecursive(int[] list) {
-        // System.out.printf("Rec. Sorting list %s\n", Tester.printArray(list));
         // Base case
-        if (list.length <= 1)
-            return list;
+        if (list.length <= 1) return list;
 
         int midpoint = list.length / 2;
         int[] left = new int[midpoint];
-        // int leftPos = 0;
         int[] right = new int[list.length - midpoint];
-        // int rightPos = 0;
 
         // split list into two halves
-        for (int i=0; i < list.length; i++) {
+        for (int i = 0; i < list.length; i++) {
             if (i < midpoint) {
                 left[i] = list[i];
             } else {
@@ -58,6 +68,13 @@ public class Sorter {
         return merge(left, right);
     }
 
+    /**
+     * acts as a "zipper" to merge sorted lists
+     * from mergeSortRecursive.
+     * @param left first sorted list to merge
+     * @param right second sorted list to merge
+     * @return the sorted combination of left and right
+     */
     private int[] merge(int[] left, int[] right) {
         int outputLength = left.length + right.length;
         int[] output = new int[outputLength];
@@ -83,9 +100,6 @@ public class Sorter {
         while (rightPos < right.length) {
             output[outputPos++] = right[rightPos++];
         }
-        System.out.printf("Merged lists %s and %s into list %s\n",
-            Tester.printArray(left), Tester.printArray(right), Tester.printArray(output)
-        );
         return output;
     }
 
