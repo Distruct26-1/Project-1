@@ -8,12 +8,13 @@ package project1;
 
 public class Sorter {
 
-	
 	public int comparisons;
-	
+
 	/**
-	 * Shaker sort is like two bubble sorts, going from left to right and back to left,
-	 * checking each value is greater or less then itself, swapping where applicable. 
+	 * Shaker sort is like two bubble sorts, going from left to right and back to
+	 * left, checking each value is greater or less then itself, swapping where
+	 * applicable.
+	 * 
 	 * @param list array to be sorted
 	 * @return the number of comparisons that were done to sort this array
 	 * @author KatM
@@ -23,10 +24,12 @@ public class Sorter {
 		boolean swap = true;
 		int begin = 0;
 		int end = list.length - 1;
+		int comparisons = 0;
 
 		while (swap) {
 			swap = false;
 			for (int i = begin; i < end; i++) {
+				comparisons++;
 				if (list[i] > list[i + 1]) {
 					int temp = list[i];
 					list[i] = list[i + 1];
@@ -51,17 +54,8 @@ public class Sorter {
 			begin++;
 		}
 
-		return 0; // Return 0 for now, add counting later
+		return comparisons;  //check in JUNIT
 
-	}
-
-	private boolean swap(int[] list, int i) {
-		boolean swap;
-		int temp = list[i];
-		list[i] = list[i + 1];
-		list[i + 1] = temp;
-		swap = true;
-		return swap;
 	}
 
 	public int quickSort(int[] list) {
