@@ -215,12 +215,12 @@ public class Tester {
     }
 
     /**
-     * Prints the array as a space-separated string.
-     * Useful for debugging mostly, I think.
+     * Prints the comparisons portion of the
+     * array as a space-separated string.
      * @param array array to be converted
      * @return stringified version of array
      */
-    private static String printArray(Result[] array) {
+    public static String printArray(Result[] array) {
         String output = "[ ";
         for (Result result : array) {
             output += String.valueOf(result.operations);
