@@ -25,3 +25,5 @@
 - Verification evidence
 
 ## Cristian Taylor
+
+- Editing of Screencast video (≤ 10 minutes)
