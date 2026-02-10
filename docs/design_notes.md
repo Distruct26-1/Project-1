@@ -4,6 +4,12 @@ This project is split into two main classes: Sorter and Tester. Sorter contains 
 
 ## Sorter
 
+### Sort signatures
+
+All four of the function signatures for the sorters are the same: `int[]` input, `int` output. This is because the Tester loops through each sorting algorithm and does the same for each: it gives it an `int[]` as an input, and stores its output to an `int`.
+
+Your IDE will hopefully warn you if you try to change the signature of any of the main sorting methods, but in case it doesn't, I'll warn you here: don't do it. If you need to have a method with a different return type, or different set of parameters, make another method. My implementation of Mergesort is now in main (it got accidentally merged, sorry!) so you should be able to reference it there - it uses three methods in total: the `mergeSort` method, which is the main one that retains the `int[]` input and `int` output, `mergeSortRecursive`, which has different parameters and a different return type and is called by `mergeSort`, and `merge`, which is called by `mergeSortRecursive`. Anyway if you have questions about how to make this work for your sorting algorithm, reach out to me (Dallin) on Discord.
+
 ### Non-static
 
 It's good for Sorter to be stateful, because it allows for methods take care of the comparison counter, which is important for consistency. I would say the overhead for this abstraction is minimal.
