@@ -10,65 +10,65 @@
 
 ### Scaffolding
 
-Assignee: Dallin
+Assignee: Dallin  
 Status: Done (c640b4a)
 
 ### Permutation generator
 
-Assignee: KM
+Assignee: KM  
 Status: Incomplete
 
 ### Tester
 
-Assignee: Dallin
+Assignee: Dallin  
 Status: Incomplete
 
 ### JUnit Test Case
 
-Assignee: KM
+Assignee: KM  
 Status: Incomplete
 
 ### Mergesort
 
-Assignee: Dallin
+Assignee: Dallin  
 Status: Incomplete
 
 ### Quicksort
 
-Assignee: KM
+Assignee: KM  
 Status: Incomplete
 
 ### Shaker sort
 
-Assignee: KM
+Assignee: KM  
 Status: Incomplete
 
 ### Heapsort
 
-Assignee: _____
+Assignee: _____  
 Status: Incomplete
 
 ### Final QA: Results
 
-Assignee: _____
+Assignee: _____  
 Status: Incomplete
 
 ### Final QA: Code quality
 
-Assignee: _____
+Assignee: _____  
 Status: Incomplete
 
 ### Big-O / Big-Ω / Big-Θ
 
-Assignee: _____
+Assignee: _____  
 Status: Incomplete
 
 ### Final report
 
-Assignee: Agnes
+Assignee: Agnes  
 Status: Incomplete
 
 ### Video report
 
-Assignee: Cristian
+Assignee: Cristian  
 Status: Incomplete
