@@ -21,7 +21,7 @@ Status: Incomplete
 ### Tester
 
 Assignee: Dallin  
-Status: Incomplete
+Status: Done (3237e8b)
 
 ### JUnit Test Case
 
@@ -31,7 +31,7 @@ Status: Incomplete
 ### Mergesort
 
 Assignee: Dallin  
-Status: Incomplete
+Status: Done (420a248)
 
 ### Quicksort
 
