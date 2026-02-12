@@ -18,7 +18,9 @@ As a part of CS2430, we're tasked to implement several sorting algorithms, along
 
 ## Build instructions
 
-The project has been tested to work on Java 25, but earlier versions may be supported.
+The project has been tested to work on versions as early as Java 21, but earlier versions may be supported.
+
+To run the test suite, you'll need to have JUnit5 in your build path. However, the main Tester can be run without this.
 
 To run the benchmarks for lengths 4, 6, and 8 consecutively, run `java src/project1/Tester.java` (or `java src\project1\Tester.java` for Windows).
 
