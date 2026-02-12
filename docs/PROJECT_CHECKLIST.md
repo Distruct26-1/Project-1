@@ -2,7 +2,7 @@
 
 ## 1. Team Organization
 - [X] Confirm team members and roles
-- [ ] Document roles in /docs Project Plan
+- [X] Document roles in /docs Project Plan
 - [X] Create and maintain CONTRIBUTIONS.md
 - [X] Define day/time for team meetings
 - [x] Submit Weekly Status Reports
