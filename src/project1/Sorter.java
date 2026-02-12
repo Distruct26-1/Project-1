@@ -122,7 +122,8 @@ public class Sorter {
      */
     public int mergeSort(int[] list) {
         comparisons = 0;
-        list = mergeSortRecursive(list);
+        int[] sorted = mergeSortRecursive(list);
+		transferArray(sorted, list);
         return comparisons;
     }
 
@@ -193,6 +194,12 @@ public class Sorter {
         }
         return output;
     }
+
+	private void transferArray(int[] from, int[] to) {
+		for (int i=0; i < from.length; i++) {
+			to[i] = from[i];
+		}
+	}
 
 	public int heapSort(int[] list) {
 		comparisons = 0;
