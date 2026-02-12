@@ -20,6 +20,6 @@ As a part of CS2430, we're tasked to implement several sorting algorithms, along
 
 The project has been tested to work on Java 25, but earlier versions may be supported.
 
-To run the benchmarks for lengths 4, 6, and 8 consecutively, run `java src/Tester.java` (or `java src\Tester.java` for Windows).
+To run the benchmarks for lengths 4, 6, and 8 consecutively, run `java src/project1/Tester.java` (or `java src\project1\Tester.java` for Windows).
 
-To specify an array length (or series of array lengths), pass them as command line inputs: `java src/Tester.java 7` or `java src/Tester.java 6 7 8`.
+To specify an array length (or series of array lengths), pass them as command line inputs: `java src/project1/Tester.java 7` or `java src/project1/Tester.java 6 7 8`.

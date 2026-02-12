@@ -10,10 +10,12 @@
  */
 package project1;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class Tester {
-
 	static int outlierCount = 10;
 	private Function<int[], Integer> algorithm;
 	public String algorithmName;
@@ -30,43 +32,163 @@ public class Tester {
 		this.algorithmName = algorithmName;
 	}
 
-	/**
-	 * Sorts using the instance's associated algorithm. Updates the running average,
-	 * and if the results are particularly good or bad, stores the data in a list of
-	 * outliers.
-	 * 
-	 * @param list the list to be sorted
-	 * @return the comparisons used by the algorithm
-	 */
-	private int benchmark(int[] list, int numPrevBenchmarks) {
-		int comparisons = algorithm.apply(list.clone());
-		average = (average * numPrevBenchmarks + comparisons) / (numPrevBenchmarks + 1);
+    /**
+     * Sorts using the instance's associated algorithm.
+     * Updates the running average, and if the results
+     * are particularly good or bad, stores the data in
+     * a list of outliers.
+     * @param list the list to be sorted
+     * @param numPrevBenchmarks number of previous benchmarks
+     *      (1 if it's the second benchmark, 23 if it's the 24th...)
+     * @return the comparisons used by the algorithm
+     */
+    private int benchmark(int[] list, int numPrevBenchmarks) {
+        int comparisons = algorithm.apply(list.clone());
+        Result result = new Result(list, comparisons);
 
-		// TODO: still need to create result and check if it belongs in
-		// bestCase/worstCase arrays
+        sortIntoList(
+            bestCases,
+            result,
+            (result2, index) -> bestCases[index].compareTo(result2) > 0
+        );
+        sortIntoList(
+            worstCases,
+            result,
+            (result2, index) -> worstCases[index].compareTo(result2) < 0
+        );
 
-		return comparisons;
-	}
+        average = average + (comparisons - average) / numPrevBenchmarks;
+        return comparisons;
+    }
 
-	public static void main(String[] args) {
-		// In this function is some minimal code to demonstrate
-		// the way that the different parts of the codebase are
-		// intended to come together.
-		int[] integerList = generateArray(3);
+    /**
+     * helper function to sort a new result into a list,
+     * if it's small/big enough to belong in the list.
+     * Works for both ascending and descending lists.
+     * @param list the list to insert result into
+     * @param result the result to be inserted into
+     * @param comparison lambda determining how the items should
+     *       be sorted. This is what makes it work for best/worst
+     *       cases at the same time.
+     */
+    private void sortIntoList(
+        Result[] list,
+        Result result,
+        BiFunction<Result, Integer, Boolean> comparison
+    ) {
+        if (list[0] == null || comparison.apply(result, 0)) {
+            list[0] = result;
+            for (int next = 1; next < outlierCount; next++) {
+                if (list[next] == null || comparison.apply(result, next)) {
+                    // swap result with next item
+                    Result thirdHand = list[next - 1];
+                    list[next - 1] = list[next];
+                    list[next] = thirdHand;
+                } else {
+                    // if result is no longer bigger/smaller than
+                    // the next one, it has been sorted.
+                    break;
+                }
+            }
+        }
+    }
 
-		Sorter sorter = new Sorter();
-		// just testing my first sorting method first
-		Tester[] testers = { new Tester(sorter::shakerSort, "Shaker sort"), };
+    /**
+     * The driver for the testing. Doesn't do much aside from
+     * parse CLI args and call testForArray
+     * @param args CLI args (integers only)
+     */
+    public static void main(String[] args) {
+        ArrayList<Integer> arrayLengths;
+        if (args.length > 0) {
+            // parse integers from args, use that
+            arrayLengths = new ArrayList<>();
+            for (String arg : args) {
+                Integer nextArg;
 
-		int[] counter = { 0 };
-		
-		//I could get rid of the loop as the permute method does the work. 
-		//I just have it printing the average as nothing else is quite ready yet for testing
+                try {
+                    // Handle if arg isn't integer
+                    nextArg = Integer.valueOf(arg);
+                } catch (Exception e) {
+                    System.err.println(
+                        "ERROR: invalid argument. Not an integer"
+                    );
+                    return;
+                }
 
-		permute(integerList, integerList.length, testers, counter);
+                // Handle if arg is too small
+                if (nextArg < 1) {
+                    System.err.println(
+                        "ERROR: invalid argument. Integers must be positive."
+                    );
+                    return;
+                }
 
-		System.out.println(testers[0].algorithmName + "average" + testers[0].average);
-	}
+                arrayLengths.add(nextArg);
+            }
+        } else {
+            // default array lengths.
+            arrayLengths = new ArrayList<Integer>(Arrays.asList(4, 6, 8));
+        }
+
+        for (int arrayLength : arrayLengths) {
+            int[] consecutiveArray = generateArray(arrayLength);
+            testForBaseArray(consecutiveArray);
+        }
+    }
+
+    /**
+     * The bulk of the testing. Creates a tester for each algorithm,
+     * and runs `benchmark` on each of them for every permutation of
+     * the given integerList.
+     * @param integerList original list to be permuted. does not have
+     *      to be consecutive integers.
+     */
+    private static void testForBaseArray(int[] integerList) {
+        Integer permutationIndex = 1;
+
+        // only one sorter is needed throughout. Algorithms
+        // are expected to reset their own comparison counter.
+        Sorter sorter = new Sorter();
+
+        // list of all testers to be iterated through.
+        Tester[] testers = {
+            new Tester(sorter::shakerSort, "Shaker sort"),
+            new Tester(sorter::quickSort, "Quick sort"),
+            new Tester(sorter::mergeSort, "Merge sort"),
+            new Tester(sorter::heapSort, "Heap sort"),
+        };
+
+        // int totalRunNums = factorial(integerList.length);
+        // while (permutationIndex <= totalRunNums) {
+        //     permute(permutationIndex, integerList);
+        //     for (Tester tester : testers) {
+        //         // for the current permutation, sorts it
+        //         // using every sorting algorithm
+        //         tester.benchmark(integerList, permutationIndex);
+        //     }
+        //     permutationIndex++;
+        // }
+
+        permute(integerList, integerList.length, testers, permutationIndex);
+
+        // print out results at the end
+        for (Tester tester : testers) {
+            System.out.printf(
+                "\n\n- - - - - - %s - - - - - -\n",
+                tester.algorithmName
+            );
+            System.out.printf("Average comparisons: %s\n", tester.average);
+            System.out.printf(
+                "Best cases:  %s\n",
+                printArray(tester.bestCases)
+            );
+            System.out.printf(
+                "Worst cases: %s\n",
+                printArray(tester.worstCases)
+            );
+        }
+    }
 
 	/**
 	 * Creates an array of consecutive integers, from 1 to size. Intended as a base
@@ -83,20 +205,21 @@ public class Tester {
 		return output;
 	}
 
-	/**
-	 * Prints the array as a space-separated string. Useful for debugging mostly, I
-	 * think.
-	 * 
-	 * @param array array to be converted
-	 * @return stringified version of array
-	 */
-	private static String printArray(int[] array) {
-		String output = "";
-		for (int num : array) {
-			output += String.valueOf(num);
-		}
-		return output;
-	}
+    /**
+     * Prints the comparisons portion of the
+     * array as a space-separated string.
+     * @param array array to be converted
+     * @return stringified version of array
+     */
+    public static String printArray(Result[] array) {
+        String output = "[ ";
+        for (Result result : array) {
+            output += String.valueOf(result.operations);
+            output += " ";
+        }
+        output += "]";
+        return output;
+    }
 
 	/**
 	 * Heaps algorithm to create permutations
@@ -107,8 +230,7 @@ public class Tester {
 	 * @param permutationCounter counter keeps track of what permutation we are on
 	 *                           for averaging
 	 */
-
-	private static void permute(int[] list, int size, Tester[] testers, int[] permutationCounter) {
+	private static void permute(int[] list, int size, Tester[] testers, Integer permutationCounter) {
 		// base case since Heap's algorithm is based on recursion
 		if (size == 1) {
 			// no further work needs to be done. test on all sorters. this is so that we
@@ -117,9 +239,9 @@ public class Tester {
 			// for the report
 			// based on this.
 			for (Tester tester : testers) {
-				tester.benchmark(list.clone(), permutationCounter[0]);
+				tester.benchmark(list.clone(), permutationCounter);
 			}
-			permutationCounter[0]++;
+			permutationCounter++;
 			return;
 		}
 
@@ -152,7 +274,7 @@ class Result implements Comparable<Result> {
 	int[] list;
 	int operations;
 
-	private Result(int[] list, int operations) {
+	public Result(int[] list, int operations) {
 		this.list = list;
 		this.operations = operations;
 	}

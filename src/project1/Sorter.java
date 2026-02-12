@@ -1,10 +1,13 @@
-package project1;
-
 /**
  * Programming Project 1 - Spring 2026 CSIS 2430 Section 2
  * 
- * Group 3: Agnes Braz Franco Christian Taylor Dallin Yauney Kathleen Monahan
+ * Group 3:
+ * Agnes Braz Franco 
+ * Christian Taylor
+ * Dallin Yauney
+ * Kathleen Monahan
  */
+package project1;
 
 public class Sorter {
 
@@ -111,10 +114,85 @@ public class Sorter {
 		return j;
 	}
 
-	public int mergeSort(int[] list) {
-		comparisons = 0;
-		return comparisons;
-	}
+    /**
+     * "Runner" for mergesort. Calls mergeSortRecursive.
+     * Implementation for mergeSort inspired by Wikipedia.
+     * @param list
+     * @return
+     */
+    public int mergeSort(int[] list) {
+        comparisons = 0;
+        list = mergeSortRecursive(list);
+        return comparisons;
+    }
+
+    /**
+     * Primary method for mergeSort. Splits
+     * its input in two, and recurses on each half.
+     * Returns `list` if it's small, and zips each half
+     * back together.
+     * @param list the list to sort
+     * @return the sorted version of `list`
+     */
+    private int[] mergeSortRecursive(int[] list) {
+        // Base case
+        if (list.length <= 1) return list;
+
+        int midpoint = list.length / 2;
+        int[] left = new int[midpoint];
+        int[] right = new int[list.length - midpoint];
+
+        // split list into two halves
+        for (int i = 0; i < list.length; i++) {
+            if (i < midpoint) {
+                left[i] = list[i];
+            } else {
+                right[i - midpoint] = list[i];
+            }
+        }
+
+        // recursively sort each half
+        left = mergeSortRecursive(left);
+        right = mergeSortRecursive(right);
+
+        // merge sorted sublists
+        return merge(left, right);
+    }
+
+    /**
+     * acts as a "zipper" to merge sorted lists
+     * from mergeSortRecursive.
+     * @param left first sorted list to merge
+     * @param right second sorted list to merge
+     * @return the sorted combination of left and right
+     */
+    private int[] merge(int[] left, int[] right) {
+        int outputLength = left.length + right.length;
+        int[] output = new int[outputLength];
+        int outputPos = 0;
+
+        int leftPos = 0;
+        int rightPos = 0;
+
+        // merge lists together
+        while (leftPos < left.length && rightPos < right.length) {
+            if (lessThan(left[leftPos], right[rightPos])) {
+                output[outputPos++] = left[leftPos++];
+            } else {
+                output[outputPos++] = right[rightPos++];
+            }
+        }
+
+        // when one list runs out, empty other list
+        // directly into output
+        while (leftPos < left.length) {
+            output[outputPos++] = left[leftPos++];
+        }
+        while (rightPos < right.length) {
+            output[outputPos++] = right[rightPos++];
+        }
+        return output;
+    }
 
 	public int heapSort(int[] list) {
 		comparisons = 0;
