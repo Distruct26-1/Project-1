@@ -26,4 +26,5 @@
 
 ## Cristian Taylor
 
+- Heapsort Implementation
 - Editing of Screencast video (≤ 10 minutes)
