@@ -159,17 +159,7 @@ public class Tester {
             new Tester(sorter::heapSort, "Heap sort"),
         };
 
-        // int totalRunNums = factorial(integerList.length);
-        // while (permutationIndex <= totalRunNums) {
-        //     permute(permutationIndex, integerList);
-        //     for (Tester tester : testers) {
-        //         // for the current permutation, sorts it
-        //         // using every sorting algorithm
-        //         tester.benchmark(integerList, permutationIndex);
-        //     }
-        //     permutationIndex++;
-        // }
-
+        // go through every permutation, benchmarking each one along the way
         permute(integerList, integerList.length, testers, permutationIndex);
 
         // print out results at the end
@@ -233,11 +223,9 @@ public class Tester {
 	private static void permute(int[] list, int size, Tester[] testers, Integer permutationCounter) {
 		// base case since Heap's algorithm is based on recursion
 		if (size == 1) {
-			// no further work needs to be done. test on all sorters. this is so that we
-			// don't need
-			// to store all permutations. I will still be able to have data to do a graph
-			// for the report
-			// based on this.
+			// no further work needs to be done. test on all sorters. this is
+            // so that we don't need to store all permutations. I will still
+            // be able to have data to do a graph for the report based on this.
 			for (Tester tester : testers) {
 				tester.benchmark(list.clone(), permutationCounter);
 			}
@@ -257,6 +245,12 @@ public class Tester {
 		}
 	}
 
+    /**
+     * helper method to swap two elements of an array
+     * @param array array to have elements swapped
+     * @param i first index of swapped element
+     * @param j second index of swapped element
+     */
 	private static void swap(int[] array, int i, int j) {
 		int temp = array[i];
 		array[i] = array[j];

@@ -117,8 +117,8 @@ public class Sorter {
     /**
      * "Runner" for mergesort. Calls mergeSortRecursive.
      * Implementation for mergeSort inspired by Wikipedia.
-     * @param list
-     * @return
+     * @param list list to be sorted
+     * @return number of comparisons
      */
     public int mergeSort(int[] list) {
         comparisons = 0;
