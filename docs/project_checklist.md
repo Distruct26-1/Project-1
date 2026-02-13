@@ -14,7 +14,7 @@
 - [ ] Ensure evidence links for completed tasks (issues, commits, PRs)
 
 ## 3. Programming Progress Tracking
-- [ ] Generate all permutations of integers 0 to n−1
+- [X] Generate all permutations of integers 0 to n−1
 - [ ] Implement Mergesort, Quicksort, Shaker Sort, and Heapsort
 - [ ] Ensure correct sorting and consistent comparison counting
 - [ ] Run all algorithms on every permutation and record results
