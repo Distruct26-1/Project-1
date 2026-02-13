@@ -16,7 +16,7 @@ Status: Done (c640b4a)
 ### Permutation generator
 
 Assignee: KM  
-Status: Incomplete
+Status: Done ( 54eb4c4…d8ad46b)
 
 ### Tester
 
@@ -26,7 +26,7 @@ Status: Done (3237e8b)
 ### JUnit Test Case
 
 Assignee: KM  
-Status: Incomplete
+Status: IP
 
 ### Mergesort
 
@@ -36,12 +36,12 @@ Status: Done (420a248)
 ### Quicksort
 
 Assignee: KM  
-Status: Incomplete
+Status: Done
 
 ### Shaker sort
 
 Assignee: KM  
-Status: Incomplete
+Status: Done
 
 ### Heapsort
 
