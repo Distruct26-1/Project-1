@@ -36,12 +36,12 @@ Status: Done (420a248)
 ### Quicksort
 
 Assignee: KM  
-Status: Done
+Status: Done (54eb4c4…d8ad46b)
 
 ### Shaker sort
 
 Assignee: KM  
-Status: Done
+Status: Done (54eb4c4)
 
 ### Heapsort
 
