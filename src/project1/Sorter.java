@@ -201,7 +201,7 @@ public class Sorter {
 		}
 	}
 
-		/**
+/**
 	 * Heap sort initially turn the array into a max heap
 	 * and then begins to organize the order based off of said max heap
 	 * 
@@ -214,17 +214,18 @@ public class Sorter {
 	 */
 	
 	//This method will help the heapSort turn the array into a heap
-	private static void heapify(int[] holder, int length, int index) {
+	private void heapify(int[] holder, int length, int index) {
+		
 		
 		int top = index;
 		int left = 2*index +1;
 		int right = 2*index +2;
 		
 		//checks if the left or right variable is larger than the parent
-		if(left < length && holder[left] > holder[top]) {
+		if(left < length && greaterThan(holder[left], holder[top])) {
 			top = left;
 		}
-		if(right < length && holder[right] > holder[top]) {
+		if(right < length && greaterThan(holder[right], holder[top])) {
 			top = right;
 		}
 		
@@ -239,8 +240,9 @@ public class Sorter {
 	}
 	
 	// Main function to do heap sort
-    static void heapSort(int[] arr) {
+    public int heapSort(int[] arr) {
         int n = arr.length;
+        comparisons = 0;
 
         // Build heap (rearrange vector)
         for (int i = n / 2 - 1; i >= 0; i--)
@@ -256,7 +258,9 @@ public class Sorter {
 
             // Call max heapify on the reduced heap
             heapify(arr, i, 0);
+            
         }
+        return comparisons;
     }
 
 	/**
