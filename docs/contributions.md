@@ -7,10 +7,9 @@
 - Project structure
 - Git health
 
-
 ## Agnes Braz Franco
 
-**Communications Lead**
+**Communications Lead**:
 
 - Report assembly
 - Run instructions
@@ -18,7 +17,7 @@
 
 ## Kathleen Monahan
 
-**Verification Lead**
+**Verification Lead**:
 
 - Test plan
 - Edge cases
