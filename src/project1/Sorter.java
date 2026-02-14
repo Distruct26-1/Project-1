@@ -1,7 +1,8 @@
 /**
- * Programming Project 1 - Spring 2026 CSIS 2430 Section 2
+ * Programming Project 1 - Spring 2026
+ * CSIS 2430 Section 2
  * 
- * Group 3:
+ * Group 3 (The Penguins):
  * Agnes Braz Franco 
  * Christian Taylor
  * Dallin Yauney
