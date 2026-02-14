@@ -201,10 +201,63 @@ public class Sorter {
 		}
 	}
 
-	public int heapSort(int[] list) {
-		comparisons = 0;
-		return comparisons;
+		/**
+	 * Heap sort initially turn the array into a max heap
+	 * and then begins to organize the order based off of said max heap
+	 * 
+	 * Modified from GeeksforGeeks (Heap Sort)
+	 * https://www.geeksforgeeks.org/dsa/heap-sort/
+	 * 
+	 * @param list array to be sorted
+	 * @return a sorted array
+	 * @author Cristian
+	 */
+	
+	//This method will help the heapSort turn the array into a heap
+	private static void heapify(int[] holder, int length, int index) {
+		
+		int top = index;
+		int left = 2*index +1;
+		int right = 2*index +2;
+		
+		//checks if the left or right variable is larger than the parent
+		if(left < length && holder[left] > holder[top]) {
+			top = left;
+		}
+		if(right < length && holder[right] > holder[top]) {
+			top = right;
+		}
+		
+		//Checks if the parent changed and will recall itself if so
+		if(top != index) {
+			int temp = holder[index];
+			holder[index] = holder[top];
+			holder[top] = temp;
+			heapify(holder, length, top);
+		}
+		
 	}
+	
+	// Main function to do heap sort
+    static void heapSort(int[] arr) {
+        int n = arr.length;
+
+        // Build heap (rearrange vector)
+        for (int i = n / 2 - 1; i >= 0; i--)
+            heapify(arr, n, i);
+
+        // One by one extract an element from heap
+        for (int i = n - 1; i > 0; i--) {
+
+            // Move current root to end
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            // Call max heapify on the reduced heap
+            heapify(arr, i, 0);
+        }
+    }
 
 	/**
 	 * wrapper around >, that increments comparisons
