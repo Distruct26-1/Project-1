@@ -221,10 +221,10 @@ public class Sorter {
 		int right = 2*index +2;
 		
 		//checks if the left or right variable is larger than the parent
-		if(left < length && holder[left] > holder[top]) {
+		if(greaterThan(left , length) && lessThan(holder[left], holder[top])) {
 			top = left;
 		}
-		if(right < length && holder[right] > holder[top]) {
+		if(greaterThan(right, length) && lessThan(holder[right], holder[top])) {
 			top = right;
 		}
 		
@@ -239,8 +239,9 @@ public class Sorter {
 	}
 	
 	// Main function to do heap sort
-    static void heapSort(int[] arr) {
+    private int heapSort(int[] arr) {
         int n = arr.length;
+		comparisons = 0;
 
         // Build heap (rearrange vector)
         for (int i = n / 2 - 1; i >= 0; i--)
@@ -257,6 +258,7 @@ public class Sorter {
             // Call max heapify on the reduced heap
             heapify(arr, i, 0);
         }
+		return comparisons;
     }
 
 	/**
