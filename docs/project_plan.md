@@ -50,17 +50,17 @@ Status: Incomplete
 
 ### Final QA: Results
 
-Assignee: _____  
+Assignee: Dallin  
 Status: Incomplete
 
 ### Final QA: Code quality
 
-Assignee: _____  
+Assignee: Dallin  
 Status: Incomplete
 
 ### Big-O / Big-Ω / Big-Θ
 
-Assignee: _____  
+Assignee: Dallin  
 Status: Incomplete
 
 ### Final report
