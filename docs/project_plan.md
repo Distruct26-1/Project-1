@@ -46,7 +46,7 @@ Status: Done (54eb4c4)
 ### Heapsort
 
 Assignee: Cristian  
-Status: Incomplete
+Status: complete
 
 ### Final QA: Results
 
