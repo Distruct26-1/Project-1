@@ -173,14 +173,22 @@ public class Tester {
 	 * @return stringified version of array
 	 */
 	public static String printArray(Result[] array) {
-		String output = "[ ";
+		String output = "\n";
 		for (Result result : array) {
 			if (result != null) {
+				output += "     [";
+				for (int i =0; i<result.list.length; i++) {
+					output += result.list[i]; 
+					if (i<result.list.length-1) output += ", "; 
+				}
+				output += "] == "; 
+				
+				
 				output += String.valueOf(result.operations);
-				output += " ";
+				output += " comparisons \n";
 			}
 		}
-		output += "]";
+	
 		return output;
 	}
 
