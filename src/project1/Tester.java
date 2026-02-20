@@ -189,7 +189,7 @@ public class Tester {
 				output += "] == "; 
 				
 				
-				output += String.valueOf(result.operations);
+				output += String.valueOf(result.comparisons);
 				output += " comparisons \n";
 			}
 		}
@@ -239,15 +239,15 @@ public class Tester {
  */
 class Result implements Comparable<Result> {
 	int[] list;
-	int operations;
+	int comparisons;
 
-	public Result(int[] list, int operations) {
+	public Result(int[] list, int comparisons) {
 		this.list = list;
-		this.operations = operations;
+		this.comparisons = comparisons;
 	}
 
 	@Override
 	public int compareTo(Result other) {
-		return Integer.compare(this.operations, other.operations);
+		return Integer.compare(this.comparisons, other.comparisons);
 	}
 }
