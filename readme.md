@@ -25,3 +25,5 @@ To run the test suite, you'll need to have JUnit5 in your build path. However, t
 To run the benchmarks for lengths 4, 6, and 8 consecutively, run `java src/project1/Tester.java` (or `java src\project1\Tester.java` for Windows).
 
 To specify an array length (or series of array lengths), pass them as command line inputs: `java src/project1/Tester.java 7` or `java src/project1/Tester.java 6 7 8`.
+
+*However*: If you supply more than 5 array lengths, the program will switch to CSV mode, and output the results in a different format designed for creating graphs. For example: `java src/project1/Tester.java 3 4 5 6 8 10` will output a list of the avg, best, and worst for the arrays of those lengths as a CSV format. You'll still need to copy the results into a csv file, or output them directly using shell commands.
