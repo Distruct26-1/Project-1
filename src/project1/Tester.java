@@ -38,6 +38,10 @@ public class Tester {
 		permutations = 0;
 	}
 
+	private double average() {
+		return (double)comparisons / permutations;
+	}
+
 	/**
 	 * Sorts using the instance's associated algorithm. Updates the running average,
 	 * and if the results are particularly good or bad, stores the data in a list of
@@ -178,26 +182,25 @@ public class Tester {
 			System.out.printf("%d,", integerList.length);
 			// average
 			for (Tester tester : testers)
-				System.out.printf("%.3f,", tester.average);
+				System.out.printf("%.3f,", tester.average());
 
 			// best
 			for (Tester tester : testers)
-				System.out.printf("%d,", tester.bestCases[outlierCount-1].operations);
+				System.out.printf("%d,", tester.bestCases[outlierCount-1].comparisons);
 
 			// worst
 			for (Tester tester : testers)
-				System.out.printf("%d,", tester.worstCases[outlierCount-1].operations);
+				System.out.printf("%d,", tester.worstCases[outlierCount-1].comparisons);
 
 			System.out.printf("\n");
 		} else {
 			// print out results at the end
-      System.out.printf("- - - Results for list with length %d - - -\n", integerList.length);
+			System.out.printf("- - - Results for list with length %d - - -\n", integerList.length);
 			for (Tester tester : testers) {
 				System.out.printf(" - - - - - - %s - - - - - -\n", tester.algorithmName);
-        double average = (double) tester.comparisons / tester.permutations;
-        System.out.printf("  Average comparisons: %.3f\n\n", average);
-        System.out.printf("  Best cases:  %s\n", printArray(tester.bestCases));
-        System.out.printf("  Worst cases: %s\n", printArray(tester.worstCases));
+				System.out.printf("  Average comparisons: %.3f\n\n", tester.average());
+				System.out.printf("  Best cases:  %s\n", printArray(tester.bestCases));
+				System.out.printf("  Worst cases: %s\n", printArray(tester.worstCases));
 			}
 		}
 	}
