@@ -172,7 +172,8 @@ public class Tester {
 	}
 
 	/**
-	 * Prints the comparisons portion of the array as a space-separated string.
+	 * Formats the results as comparisons and their
+	 * associated arrays as a block.
 	 * 
 	 * @param array array to be converted
 	 * @return stringified version of array
@@ -187,8 +188,6 @@ public class Tester {
 					if (i<result.list.length-1) output += ", "; 
 				}
 				output += "] == "; 
-				
-				
 				output += String.valueOf(result.comparisons);
 				output += " comparisons \n";
 			}
