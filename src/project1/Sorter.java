@@ -109,7 +109,6 @@ public class Sorter {
         for (int j=low; j<high; j++) {
             // If current element is smaller than or
             // equal to pivot
-            // if (a[j] <= pivot)
             if (!greaterThan(list[j], pivot))
             {
                 i++;
