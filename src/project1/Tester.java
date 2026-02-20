@@ -40,8 +40,6 @@ public class Tester {
 	 * outliers.
 	 * 
 	 * @param list              the list to be sorted
-	 * @param permutationIndex  number of previous benchmarks (1 if it's the second
-	 *                          benchmark, 23 if it's the 24th...)
 	 * @return the comparisons used by the algorithm
 	 */
 	private int benchmark(int[] list) {
@@ -148,7 +146,6 @@ public class Tester {
 		System.out.printf("- - - Results for list with length %d - - -\n", integerList.length);
 		for (Tester tester : testers) {
 			System.out.printf(" - - - - - - %s - - - - - -\n", tester.algorithmName);
-			// System.out.printf("  Average comparisons: %.3f\n\n", tester.average);
 			double average = (double) tester.comparisons / tester.permutations;
 			System.out.printf("  Average comparisons: %.3f\n\n", average);
 			System.out.printf("  Best cases:  %s\n", printArray(tester.bestCases));
@@ -202,8 +199,6 @@ public class Tester {
 	 * @param list               generated array to permute
 	 * @param size               current size for recursion
 	 * @param testers            Array of Tester objects
-	 * @param permutationIndex counter keeps track of what permutation we are on
-	 *                           for averaging
 	 */
 	private static void permute(int[] list, int size, Tester[] testers) {
 		// base case since Heap's algorithm is based on recursion
