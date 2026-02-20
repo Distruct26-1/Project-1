@@ -91,55 +91,33 @@ public class Sorter {
 
 	}
 
-	// private int partition(int[] list, int lo, int hi) {
-	// 	int i = lo;
-	// 	int j = hi + 1;
-	// 	int v = list[lo];
-
-	// 	while (true) {
-	// 		while (lessThan(list[++i], v)) {
-	// 			if (i == hi)
-	// 				break;
-	// 		}
-	// 		while (lessThan(v, list[--j])) {
-	// 			if (j == lo)
-	// 				break;
-	// 		}
-	// 		if (i >= j) {
-	// 			break;
-	// 		}
-	// 		swap(list, i, j);
-
-	// 	}
-	// 	swap(list, lo, j);
-	// 	return j;
-	// }
-
-	int partition(int a[], int low, int high)
+	/**
+	 * Taken from https://www.geeksforgeeks.org/dsa/java-program-for-quicksort/
+	 * Divides an array so that the entire range is larger or
+	 * smaller than the element in list[high], depending on its size.
+	 * 
+	 * @param list list to partition
+	 * @param low lower bound of range partition
+	 * @param high upper bount of range to partition
+	 */
+	int partition(int list[], int low, int high)
     {
-        int pivot = a[high]; 
+        int pivot = list[high]; 
         int i = (low-1);
-        for (int j=low; j<high; j++)
-        {
-          
+        for (int j=low; j<high; j++) {
             // If current element is smaller than or
             // equal to pivot
             // if (a[j] <= pivot)
-            if (!greaterThan(a[j], pivot))
+            if (!greaterThan(list[j], pivot))
             {
                 i++;
-
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
+				swap(list, i, j);
             }
         }
 
-        int temp = a[i+1];
-        a[i+1] = a[high];
-        a[high] = temp;
-
-        return i+1;
+		i++;
+		swap(list, i, high);
+        return i;
     }
 
     /**
