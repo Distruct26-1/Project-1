@@ -26,7 +26,6 @@ public class Sorter {
 	 * @return the number of comparisons that were done to sort this array
 	 * @author KatM
 	 */
-
 	public int shakerSort(int[] list) {
 		boolean swap = true;
 		int begin = 0;
@@ -37,9 +36,7 @@ public class Sorter {
 			swap = false;
 			for (int i = begin; i < end; i++)
 				if (greaterThan(list[i], list[i + 1])) {
-					int temp = list[i];
-					list[i] = list[i + 1];
-					list[i + 1] = temp;
+					swap(list, i, i+1);
 					swap = true;
 				}
 
@@ -50,9 +47,7 @@ public class Sorter {
 
 			for (int i = end; i > begin; i--) {
 				if (lessThan(list[i], list[i - 1])) {
-					int temp = list[i];
-					list[i] = list[i - 1];
-					list[i - 1] = temp;
+					swap(list, i, i-1);
 					swap = true;
 				}
 			}
@@ -82,6 +77,13 @@ public class Sorter {
 		return comparisons;
 	}
 
+	/**
+	 * recursive method to drive the quicksort.
+	 * partitions itself, then recurses over each half
+	 * @param list list to be sorted
+	 * @param lo lower bound of list
+	 * @param hi upper bound of list
+	 */
 	private void sort(int[] list, int lo, int hi) {
 		if (hi <= lo)
 			return; // just ends
@@ -107,7 +109,6 @@ public class Sorter {
         for (int j=low; j<high; j++) {
             // If current element is smaller than or
             // equal to pivot
-            // if (a[j] <= pivot)
             if (!greaterThan(list[j], pivot))
             {
                 i++;
@@ -129,7 +130,7 @@ public class Sorter {
     public int mergeSort(int[] list) {
         comparisons = 0;
         int[] sorted = mergeSortRecursive(list);
-		transferArray(sorted, list);
+		transferArray(sorted, list); // <- only necessary for unit tests
         return comparisons;
     }
 
@@ -201,6 +202,15 @@ public class Sorter {
         return output;
     }
 
+	/**
+	 * helper method to allow some sorting methods, which
+	 * construct their sorted arrays, rather than sorting
+	 * their inputs, to allow the sorted array to bubble up to
+	 * the method that called it (in our case, the JUnit tests).
+	 * 
+	 * @param from array to transfer items from
+	 * @param to array to transfer items to (the original array)
+	 */
 	private void transferArray(int[] from, int[] to) {
 		for (int i=0; i < from.length; i++) {
 			to[i] = from[i];
@@ -245,7 +255,11 @@ public class Sorter {
 		
 	}
 	
-	// Main function to do heap sort
+	/**
+	 * Main function to do heapsort
+	 * @param arr array to be sorted
+	 * @return number of comparisons
+	 */
     public int heapSort(int[] arr) {
         int n = arr.length;
         comparisons = 0;
@@ -304,7 +318,7 @@ public class Sorter {
 	 * @param a    index of first number to be swapped
 	 * @param b    index of second number to be swapped
 	 */
-	private void swap(int[] list, int a, int b) {
+	public static void swap(int[] list, int a, int b) {
 		int thirdHand = list[b];
 		list[b] = list[a];
 		list[a] = thirdHand;

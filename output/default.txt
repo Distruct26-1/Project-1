@@ -1,0 +1,327 @@
+- - - Results for list with length 4 - - -
+ - - - - - - Shaker Sort - - - - - -
+  Average comparisons: 5.583
+
+  Best cases:  
+   [3, 2, 1, 4] == 6 comparisons 
+   [2, 3, 1, 4] == 6 comparisons 
+   [2, 1, 4, 3] == 5 comparisons 
+   [1, 2, 4, 3] == 5 comparisons 
+   [1, 4, 2, 3] == 5 comparisons 
+   [4, 1, 2, 3] == 5 comparisons 
+   [1, 3, 2, 4] == 5 comparisons 
+   [3, 1, 2, 4] == 5 comparisons 
+   [2, 1, 3, 4] == 5 comparisons 
+   [1, 2, 3, 4] == 3 comparisons 
+
+  Worst cases: 
+   [1, 4, 3, 2] == 6 comparisons 
+   [4, 1, 3, 2] == 6 comparisons 
+   [3, 2, 4, 1] == 6 comparisons 
+   [2, 3, 4, 1] == 6 comparisons 
+   [4, 3, 2, 1] == 6 comparisons 
+   [3, 4, 2, 1] == 6 comparisons 
+   [2, 4, 3, 1] == 6 comparisons 
+   [4, 2, 3, 1] == 6 comparisons 
+   [3, 2, 1, 4] == 6 comparisons 
+   [2, 3, 1, 4] == 6 comparisons 
+
+ - - - - - - Quick Sort - - - - - -
+  Average comparisons: 4.833
+
+  Best cases:  
+   [4, 2, 1, 3] == 4 comparisons 
+   [2, 4, 1, 3] == 4 comparisons 
+   [1, 4, 2, 3] == 4 comparisons 
+   [4, 1, 2, 3] == 4 comparisons 
+   [3, 1, 4, 2] == 4 comparisons 
+   [1, 3, 4, 2] == 4 comparisons 
+   [4, 3, 1, 2] == 4 comparisons 
+   [3, 4, 1, 2] == 4 comparisons 
+   [1, 4, 3, 2] == 4 comparisons 
+   [4, 1, 3, 2] == 4 comparisons 
+
+  Worst cases: 
+   [1, 3, 2, 4] == 5 comparisons 
+   [3, 1, 2, 4] == 5 comparisons 
+   [2, 3, 4, 1] == 6 comparisons 
+   [4, 3, 2, 1] == 6 comparisons 
+   [2, 4, 3, 1] == 6 comparisons 
+   [4, 2, 3, 1] == 6 comparisons 
+   [3, 2, 1, 4] == 6 comparisons 
+   [2, 3, 1, 4] == 6 comparisons 
+   [2, 1, 3, 4] == 6 comparisons 
+   [1, 2, 3, 4] == 6 comparisons 
+
+ - - - - - - Merge Sort - - - - - -
+  Average comparisons: 4.667
+
+  Best cases:  
+   [1, 3, 2, 4] == 5 comparisons 
+   [3, 1, 2, 4] == 5 comparisons 
+   [2, 1, 4, 3] == 4 comparisons 
+   [1, 2, 4, 3] == 4 comparisons 
+   [4, 3, 1, 2] == 4 comparisons 
+   [3, 4, 1, 2] == 4 comparisons 
+   [4, 3, 2, 1] == 4 comparisons 
+   [3, 4, 2, 1] == 4 comparisons 
+   [2, 1, 3, 4] == 4 comparisons 
+   [1, 2, 3, 4] == 4 comparisons 
+
+  Worst cases: 
+   [1, 4, 3, 2] == 5 comparisons 
+   [4, 1, 3, 2] == 5 comparisons 
+   [3, 2, 4, 1] == 5 comparisons 
+   [2, 3, 4, 1] == 5 comparisons 
+   [2, 4, 3, 1] == 5 comparisons 
+   [4, 2, 3, 1] == 5 comparisons 
+   [3, 2, 1, 4] == 5 comparisons 
+   [2, 3, 1, 4] == 5 comparisons 
+   [1, 3, 2, 4] == 5 comparisons 
+   [3, 1, 2, 4] == 5 comparisons 
+
+ - - - - - - Heap Sort - - - - - -
+  Average comparisons: 6.500
+
+  Best cases:  
+   [4, 2, 1, 3] == 6 comparisons 
+   [4, 1, 2, 3] == 6 comparisons 
+   [3, 1, 4, 2] == 6 comparisons 
+   [1, 3, 4, 2] == 6 comparisons 
+   [4, 3, 1, 2] == 6 comparisons 
+   [4, 1, 3, 2] == 6 comparisons 
+   [3, 2, 4, 1] == 6 comparisons 
+   [2, 3, 4, 1] == 6 comparisons 
+   [4, 3, 2, 1] == 6 comparisons 
+   [4, 2, 3, 1] == 6 comparisons 
+
+  Worst cases: 
+   [3, 4, 1, 2] == 7 comparisons 
+   [1, 4, 3, 2] == 7 comparisons 
+   [3, 4, 2, 1] == 7 comparisons 
+   [2, 4, 3, 1] == 7 comparisons 
+   [3, 2, 1, 4] == 7 comparisons 
+   [2, 3, 1, 4] == 7 comparisons 
+   [1, 3, 2, 4] == 7 comparisons 
+   [3, 1, 2, 4] == 7 comparisons 
+   [2, 1, 3, 4] == 7 comparisons 
+   [1, 2, 3, 4] == 7 comparisons 
+
+- - - Results for list with length 6 - - -
+ - - - - - - Shaker Sort - - - - - -
+  Average comparisons: 13.517
+
+  Best cases:  
+   [1, 5, 2, 3, 4, 6] == 9 comparisons 
+   [5, 1, 2, 3, 4, 6] == 9 comparisons 
+   [2, 1, 4, 3, 5, 6] == 9 comparisons 
+   [1, 2, 4, 3, 5, 6] == 9 comparisons 
+   [1, 4, 2, 3, 5, 6] == 9 comparisons 
+   [4, 1, 2, 3, 5, 6] == 9 comparisons 
+   [1, 3, 2, 4, 5, 6] == 9 comparisons 
+   [3, 1, 2, 4, 5, 6] == 9 comparisons 
+   [2, 1, 3, 4, 5, 6] == 9 comparisons 
+   [1, 2, 3, 4, 5, 6] == 5 comparisons 
+
+  Worst cases: 
+   [5, 4, 3, 2, 1, 6] == 15 comparisons 
+   [4, 5, 3, 2, 1, 6] == 15 comparisons 
+   [3, 5, 4, 2, 1, 6] == 15 comparisons 
+   [5, 3, 4, 2, 1, 6] == 15 comparisons 
+   [5, 4, 3, 1, 2, 6] == 15 comparisons 
+   [4, 5, 3, 1, 2, 6] == 15 comparisons 
+   [3, 5, 4, 1, 2, 6] == 15 comparisons 
+   [5, 3, 4, 1, 2, 6] == 15 comparisons 
+   [4, 3, 5, 1, 2, 6] == 15 comparisons 
+   [3, 4, 5, 1, 2, 6] == 15 comparisons 
+
+ - - - - - - Quick Sort - - - - - -
+  Average comparisons: 10.300
+
+  Best cases:  
+   [6, 2, 5, 1, 4, 3] == 8 comparisons 
+   [1, 5, 2, 6, 4, 3] == 8 comparisons 
+   [5, 1, 2, 6, 4, 3] == 8 comparisons 
+   [2, 1, 5, 6, 4, 3] == 8 comparisons 
+   [1, 2, 5, 6, 4, 3] == 8 comparisons 
+   [5, 2, 1, 6, 4, 3] == 8 comparisons 
+   [2, 5, 1, 6, 4, 3] == 8 comparisons 
+   [1, 6, 5, 2, 4, 3] == 8 comparisons 
+   [6, 1, 5, 2, 4, 3] == 8 comparisons 
+   [5, 6, 1, 2, 4, 3] == 8 comparisons 
+
+  Worst cases: 
+   [5, 3, 4, 2, 1, 6] == 15 comparisons 
+   [2, 3, 4, 5, 1, 6] == 15 comparisons 
+   [2, 3, 4, 1, 5, 6] == 15 comparisons 
+   [4, 3, 2, 1, 5, 6] == 15 comparisons 
+   [2, 4, 3, 1, 5, 6] == 15 comparisons 
+   [4, 2, 3, 1, 5, 6] == 15 comparisons 
+   [3, 2, 1, 4, 5, 6] == 15 comparisons 
+   [2, 3, 1, 4, 5, 6] == 15 comparisons 
+   [2, 1, 3, 4, 5, 6] == 15 comparisons 
+   [1, 2, 3, 4, 5, 6] == 15 comparisons 
+
+ - - - - - - Merge Sort - - - - - -
+  Average comparisons: 9.833
+
+  Best cases:  
+   [3, 1, 2, 4, 5, 6] == 8 comparisons 
+   [2, 1, 3, 4, 5, 6] == 8 comparisons 
+   [1, 3, 2, 4, 6, 5] == 7 comparisons 
+   [1, 2, 3, 4, 6, 5] == 7 comparisons 
+   [4, 6, 5, 1, 2, 3] == 7 comparisons 
+   [4, 5, 6, 1, 2, 3] == 7 comparisons 
+   [4, 6, 5, 1, 3, 2] == 7 comparisons 
+   [4, 5, 6, 1, 3, 2] == 7 comparisons 
+   [1, 3, 2, 4, 5, 6] == 7 comparisons 
+   [1, 2, 3, 4, 5, 6] == 7 comparisons 
+
+  Worst cases: 
+   [5, 1, 3, 4, 2, 6] == 11 comparisons 
+   [3, 1, 5, 4, 2, 6] == 11 comparisons 
+   [5, 4, 1, 3, 2, 6] == 11 comparisons 
+   [4, 5, 1, 3, 2, 6] == 11 comparisons 
+   [5, 1, 4, 3, 2, 6] == 11 comparisons 
+   [4, 1, 5, 3, 2, 6] == 11 comparisons 
+   [5, 1, 2, 4, 3, 6] == 11 comparisons 
+   [2, 1, 5, 4, 3, 6] == 11 comparisons 
+   [5, 2, 1, 4, 3, 6] == 11 comparisons 
+   [2, 5, 1, 4, 3, 6] == 11 comparisons 
+
+ - - - - - - Heap Sort - - - - - -
+  Average comparisons: 15.133
+
+  Best cases:  
+   [6, 1, 4, 3, 2, 5] == 12 comparisons 
+   [6, 3, 4, 1, 2, 5] == 12 comparisons 
+   [6, 2, 4, 1, 3, 5] == 12 comparisons 
+   [6, 1, 4, 2, 3, 5] == 12 comparisons 
+   [6, 2, 5, 3, 1, 4] == 12 comparisons 
+   [6, 3, 5, 2, 1, 4] == 12 comparisons 
+   [6, 1, 5, 3, 2, 4] == 12 comparisons 
+   [6, 3, 5, 1, 2, 4] == 12 comparisons 
+   [6, 2, 5, 1, 3, 4] == 12 comparisons 
+   [6, 1, 5, 2, 3, 4] == 12 comparisons 
+
+  Worst cases: 
+   [3, 6, 2, 5, 4, 1] == 17 comparisons 
+   [5, 6, 2, 3, 4, 1] == 17 comparisons 
+   [4, 6, 2, 3, 5, 1] == 17 comparisons 
+   [4, 6, 3, 2, 5, 1] == 17 comparisons 
+   [4, 3, 2, 6, 5, 1] == 17 comparisons 
+   [3, 4, 2, 6, 5, 1] == 17 comparisons 
+   [2, 4, 3, 6, 5, 1] == 17 comparisons 
+   [4, 2, 3, 6, 5, 1] == 17 comparisons 
+   [3, 6, 2, 4, 5, 1] == 17 comparisons 
+   [2, 6, 3, 4, 5, 1] == 17 comparisons 
+
+- - - Results for list with length 8 - - -
+ - - - - - - Shaker Sort - - - - - -
+  Average comparisons: 24.721
+
+  Best cases:  
+   [1, 5, 2, 3, 4, 6, 7, 8] == 13 comparisons 
+   [5, 1, 2, 3, 4, 6, 7, 8] == 13 comparisons 
+   [2, 1, 4, 3, 5, 6, 7, 8] == 13 comparisons 
+   [1, 2, 4, 3, 5, 6, 7, 8] == 13 comparisons 
+   [1, 4, 2, 3, 5, 6, 7, 8] == 13 comparisons 
+   [4, 1, 2, 3, 5, 6, 7, 8] == 13 comparisons 
+   [1, 3, 2, 4, 5, 6, 7, 8] == 13 comparisons 
+   [3, 1, 2, 4, 5, 6, 7, 8] == 13 comparisons 
+   [2, 1, 3, 4, 5, 6, 7, 8] == 13 comparisons 
+   [1, 2, 3, 4, 5, 6, 7, 8] == 7 comparisons 
+
+  Worst cases: 
+   [7, 6, 5, 4, 1, 2, 3, 8] == 28 comparisons 
+   [6, 7, 5, 4, 1, 2, 3, 8] == 28 comparisons 
+   [5, 7, 6, 4, 1, 2, 3, 8] == 28 comparisons 
+   [7, 5, 6, 4, 1, 2, 3, 8] == 28 comparisons 
+   [6, 5, 4, 7, 1, 2, 3, 8] == 28 comparisons 
+   [5, 6, 4, 7, 1, 2, 3, 8] == 28 comparisons 
+   [4, 6, 5, 7, 1, 2, 3, 8] == 28 comparisons 
+   [6, 4, 5, 7, 1, 2, 3, 8] == 28 comparisons 
+   [5, 4, 6, 7, 1, 2, 3, 8] == 28 comparisons 
+   [4, 5, 6, 7, 1, 2, 3, 8] == 28 comparisons 
+
+ - - - - - - Quick Sort - - - - - -
+  Average comparisons: 16.921
+
+  Best cases:  
+   [3, 6, 5, 1, 2, 8, 7, 4] == 13 comparisons 
+   [6, 3, 5, 1, 2, 8, 7, 4] == 13 comparisons 
+   [1, 6, 3, 2, 5, 8, 7, 4] == 13 comparisons 
+   [6, 1, 3, 2, 5, 8, 7, 4] == 13 comparisons 
+   [3, 1, 6, 2, 5, 8, 7, 4] == 13 comparisons 
+   [1, 3, 6, 2, 5, 8, 7, 4] == 13 comparisons 
+   [6, 3, 1, 2, 5, 8, 7, 4] == 13 comparisons 
+   [3, 6, 1, 2, 5, 8, 7, 4] == 13 comparisons 
+   [1, 3, 2, 6, 5, 8, 7, 4] == 13 comparisons 
+   [3, 1, 2, 6, 5, 8, 7, 4] == 13 comparisons 
+
+  Worst cases: 
+   [5, 3, 4, 2, 1, 6, 7, 8] == 28 comparisons 
+   [2, 3, 4, 5, 1, 6, 7, 8] == 28 comparisons 
+   [2, 3, 4, 1, 5, 6, 7, 8] == 28 comparisons 
+   [4, 3, 2, 1, 5, 6, 7, 8] == 28 comparisons 
+   [2, 4, 3, 1, 5, 6, 7, 8] == 28 comparisons 
+   [4, 2, 3, 1, 5, 6, 7, 8] == 28 comparisons 
+   [3, 2, 1, 4, 5, 6, 7, 8] == 28 comparisons 
+   [2, 3, 1, 4, 5, 6, 7, 8] == 28 comparisons 
+   [2, 1, 3, 4, 5, 6, 7, 8] == 28 comparisons 
+   [1, 2, 3, 4, 5, 6, 7, 8] == 28 comparisons 
+
+ - - - - - - Merge Sort - - - - - -
+  Average comparisons: 15.733
+
+  Best cases:  
+   [2, 1, 3, 4, 6, 5, 7, 8] == 12 comparisons 
+   [1, 2, 3, 4, 6, 5, 7, 8] == 12 comparisons 
+   [2, 1, 4, 3, 5, 6, 7, 8] == 12 comparisons 
+   [1, 2, 4, 3, 5, 6, 7, 8] == 12 comparisons 
+   [4, 3, 1, 2, 5, 6, 7, 8] == 12 comparisons 
+   [3, 4, 1, 2, 5, 6, 7, 8] == 12 comparisons 
+   [4, 3, 2, 1, 5, 6, 7, 8] == 12 comparisons 
+   [3, 4, 2, 1, 5, 6, 7, 8] == 12 comparisons 
+   [2, 1, 3, 4, 5, 6, 7, 8] == 12 comparisons 
+   [1, 2, 3, 4, 5, 6, 7, 8] == 12 comparisons 
+
+  Worst cases: 
+   [3, 2, 7, 1, 6, 4, 5, 8] == 17 comparisons 
+   [2, 3, 7, 1, 6, 4, 5, 8] == 17 comparisons 
+   [3, 2, 1, 7, 6, 4, 5, 8] == 17 comparisons 
+   [2, 3, 1, 7, 6, 4, 5, 8] == 17 comparisons 
+   [1, 3, 2, 7, 6, 4, 5, 8] == 17 comparisons 
+   [3, 1, 2, 7, 6, 4, 5, 8] == 17 comparisons 
+   [7, 2, 1, 3, 6, 4, 5, 8] == 17 comparisons 
+   [2, 7, 1, 3, 6, 4, 5, 8] == 17 comparisons 
+   [1, 7, 2, 3, 6, 4, 5, 8] == 17 comparisons 
+   [7, 1, 2, 3, 6, 4, 5, 8] == 17 comparisons 
+
+ - - - - - - Heap Sort - - - - - -
+  Average comparisons: 25.814
+
+  Best cases:  
+   [8, 7, 6, 3, 2, 4, 5, 1] == 21 comparisons 
+   [8, 7, 6, 2, 3, 4, 5, 1] == 21 comparisons 
+   [8, 2, 5, 3, 7, 4, 6, 1] == 21 comparisons 
+   [8, 3, 5, 2, 7, 4, 6, 1] == 21 comparisons 
+   [8, 7, 5, 3, 2, 4, 6, 1] == 21 comparisons 
+   [8, 7, 5, 2, 3, 4, 6, 1] == 21 comparisons 
+   [8, 2, 4, 3, 7, 5, 6, 1] == 21 comparisons 
+   [8, 3, 4, 2, 7, 5, 6, 1] == 21 comparisons 
+   [8, 7, 4, 3, 2, 5, 6, 1] == 21 comparisons 
+   [8, 7, 4, 2, 3, 5, 6, 1] == 21 comparisons 
+
+  Worst cases: 
+   [3, 6, 2, 5, 4, 1, 7, 8] == 29 comparisons 
+   [5, 6, 2, 3, 4, 1, 7, 8] == 29 comparisons 
+   [4, 6, 2, 3, 5, 1, 7, 8] == 29 comparisons 
+   [4, 6, 3, 2, 5, 1, 7, 8] == 29 comparisons 
+   [4, 3, 2, 6, 5, 1, 7, 8] == 29 comparisons 
+   [3, 4, 2, 6, 5, 1, 7, 8] == 29 comparisons 
+   [2, 4, 3, 6, 5, 1, 7, 8] == 29 comparisons 
+   [4, 2, 3, 6, 5, 1, 7, 8] == 29 comparisons 
+   [3, 6, 2, 4, 5, 1, 7, 8] == 29 comparisons 
+   [2, 6, 3, 4, 5, 1, 7, 8] == 29 comparisons 
+
