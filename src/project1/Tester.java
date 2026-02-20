@@ -21,12 +21,14 @@ public class Tester {
 	public String algorithmName;
 	public Result[] bestCases;
 	public Result[] worstCases;
-	public double average;
+	public long comparisons;
+	public int permutations;
 
 	public Tester(Function<int[], Integer> algorithm, String algorithmName) {
 		bestCases = new Result[outlierCount];
 		worstCases = new Result[outlierCount];
-		average = 0;
+		comparisons = 0;
+		permutations = 0;
 
 		this.algorithm = algorithm;
 		this.algorithmName = algorithmName;
@@ -42,14 +44,16 @@ public class Tester {
 	 *                          benchmark, 23 if it's the 24th...)
 	 * @return the comparisons used by the algorithm
 	 */
-	private int benchmark(int[] list, Integer permutationIndex) {
+	private int benchmark(int[] list) {
 		int comparisons = algorithm.apply(list.clone());
 		Result result = new Result(list, comparisons);
 
 		sortIntoList(bestCases, result, (result2, index) -> bestCases[index].compareTo(result2) > 0);
 		sortIntoList(worstCases, result, (result2, index) -> worstCases[index].compareTo(result2) < 0);
 
-		average = average + (comparisons - average) / permutationIndex;
+		this.comparisons += comparisons;
+		this.permutations += 1;
+		
 		return comparisons;
 	}
 
@@ -129,8 +133,6 @@ public class Tester {
 	 *                    consecutive integers.
 	 */
 	private static void testForBaseArray(int[] integerList) {
-		Integer permutationIndex = 1; 
-
 		// only one sorter is needed throughout. Algorithms
 		// are expected to reset their own comparison counter.
 		Sorter sorter = new Sorter();
@@ -140,14 +142,17 @@ public class Tester {
 				new Tester(sorter::mergeSort, "Merge sort"), new Tester(sorter::heapSort, "Heap sort"), };
 
 		// go through every permutation, benchmarking each one along the way
-		permute(integerList, integerList.length, testers, permutationIndex);
+		permute(integerList, integerList.length, testers);
 
 		// print out results at the end
+		System.out.printf("- - - Results for list with length %d - - -\n", integerList.length);
 		for (Tester tester : testers) {
-			System.out.printf("\n\n- - - - - - %s - - - - - -\n", tester.algorithmName);
-			System.out.printf("Average comparisons: %s\n", tester.average);
-			System.out.printf("Best cases:  %s\n", printArray(tester.bestCases));
-			System.out.printf("Worst cases: %s\n", printArray(tester.worstCases));
+			System.out.printf(" - - - - - - %s - - - - - -\n", tester.algorithmName);
+			// System.out.printf("  Average comparisons: %.3f\n\n", tester.average);
+			double average = (double) tester.comparisons / tester.permutations;
+			System.out.printf("  Average comparisons: %.3f\n\n", average);
+			System.out.printf("  Best cases:  %s\n", printArray(tester.bestCases));
+			System.out.printf("  Worst cases: %s\n", printArray(tester.worstCases));
 		}
 	}
 
@@ -176,7 +181,7 @@ public class Tester {
 		String output = "\n";
 		for (Result result : array) {
 			if (result != null) {
-				output += "     [";
+				output += "   [";
 				for (int i =0; i<result.list.length; i++) {
 					output += result.list[i]; 
 					if (i<result.list.length-1) output += ", "; 
@@ -201,22 +206,21 @@ public class Tester {
 	 * @param permutationIndex counter keeps track of what permutation we are on
 	 *                           for averaging
 	 */
-	private static void permute(int[] list, int size, Tester[] testers, Integer permutationIndex) {
+	private static void permute(int[] list, int size, Tester[] testers) {
 		// base case since Heap's algorithm is based on recursion
 		if (size == 1) {
 			// no further work needs to be done. test on all sorters. this is
 			// so that we don't need to store all permutations. I will still
 			// be able to have data to do a graph for the report based on this.
 			for (Tester tester : testers) {
-				tester.benchmark(list.clone(), permutationIndex);
+				tester.benchmark(list.clone());
 			}
-			permutationIndex++;
 			return;
 		}
 
 		// Heap's algorithm
 		for (int i = 0; i < size; i++) {
-			permute(list, size - 1, testers, permutationIndex);
+			permute(list, size - 1, testers);
 
 			if (size % 2 == 1) {
 				Sorter.swap(list, 0, size - 1);
