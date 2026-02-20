@@ -314,7 +314,7 @@ public class Sorter {
 	 * @param a    index of first number to be swapped
 	 * @param b    index of second number to be swapped
 	 */
-	private void swap(int[] list, int a, int b) {
+	public static void swap(int[] list, int a, int b) {
 		int thirdHand = list[b];
 		list[b] = list[a];
 		list[a] = thirdHand;

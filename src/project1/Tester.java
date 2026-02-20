@@ -219,24 +219,11 @@ public class Tester {
 			permute(list, size - 1, testers, permutationIndex);
 
 			if (size % 2 == 1) {
-				swap(list, 0, size - 1);
+				Sorter.swap(list, 0, size - 1);
 			} else {
-				swap(list, i, size - 1);
+				Sorter.swap(list, i, size - 1);
 			}
 		}
-	}
-
-	/**
-	 * helper method to swap two elements of an array
-	 * 
-	 * @param array array to have elements swapped
-	 * @param i     first index of swapped element
-	 * @param j     second index of swapped element
-	 */
-	private static void swap(int[] array, int i, int j) {
-		int temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
 	}
 }
 
