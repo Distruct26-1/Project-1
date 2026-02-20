@@ -16,7 +16,7 @@ Status: Done (c640b4a)
 ### Permutation generator
 
 Assignee: KM  
-Status: Done ( 54eb4c4…d8ad46b)
+Status: Done (54eb4c4…d8ad46b)
 
 ### Tester
 
@@ -26,7 +26,7 @@ Status: Done (3237e8b)
 ### JUnit Test Case
 
 Assignee: KM  
-Status: IP
+Status: Done (baf025b)
 
 ### Mergesort
 
@@ -51,17 +51,17 @@ Status: Done (cb00cce)
 ### Final QA: Results
 
 Assignee: Dallin  
-Status: Incomplete
+Status: Done (#10 + passing tests)
 
 ### Final QA: Code quality
 
 Assignee: Dallin  
-Status: Incomplete
+Status: Done (#10)
 
 ### Big-O / Big-Ω / Big-Θ
 
-Assignee: Dallin  
-Status: Incomplete
+Assignee: Kat  
+Status: Done
 
 ### Final report
 

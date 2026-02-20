@@ -20,8 +20,8 @@
 - [X] Generate all permutations of integers 0 to n−1
 - [x] Implement Mergesort, Quicksort, Shaker Sort, and Heapsort
 - [x] Ensure correct sorting and consistent comparison counting
-- [ ] Run all algorithms on every permutation and record results
-- [ ] Run experiments for n = 4, 6, 8 and compute best, worst, and average cases
+- [x] Run all algorithms on every permutation and record results
+- [x] Run experiments for n = 4, 6, 8 and compute best, worst, and average cases
 
 ## 4. Team Report Preparation
 
@@ -32,8 +32,8 @@
 
 ## 5. README & Deliverables
 
-- [ ] Provide clear build/run instructions
-- [ ] Explain how to reproduce experiment results
+- [x] Provide clear build/run instructions
+- [x] Explain how to reproduce experiment results
 - [ ] Include generated data files if needed
 
 ## 6. Screencast Video
