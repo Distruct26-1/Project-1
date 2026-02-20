@@ -208,10 +208,9 @@ public class Tester {
 	 * and if the results are particularly good or bad, stores the data in a list of
 	 * outliers.
 	 * 
-	 * @param list              the list to be sorted
-	 * @return the comparisons used by the algorithm
+	 * @param list	the list to be sorted
 	 */
-	private int benchmark(int[] list) {
+	private void benchmark(int[] list) {
 		int comparisons = algorithm.apply(list.clone());
 		Result result = new Result(list, comparisons);
 
@@ -220,8 +219,6 @@ public class Tester {
 
 		this.comparisons += comparisons;
 		this.permutations += 1;
-		
-		return comparisons;
 	}
 
 	/**
