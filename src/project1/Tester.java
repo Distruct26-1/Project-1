@@ -24,12 +24,16 @@ public class Tester {
 	public double average;
 
 	public Tester(Function<int[], Integer> algorithm, String algorithmName) {
-		bestCases = new Result[outlierCount];
-		worstCases = new Result[outlierCount];
-		average = 0;
+		resetState();
 
 		this.algorithm = algorithm;
 		this.algorithmName = algorithmName;
+	}
+
+	private void resetState() {
+		bestCases = new Result[outlierCount];
+		worstCases = new Result[outlierCount];
+		average = 0;
 	}
 
 	/**
@@ -115,39 +119,84 @@ public class Tester {
 			arrayLengths = new ArrayList<Integer>(Arrays.asList(4, 6, 8));
 		}
 
-		for (int arrayLength : arrayLengths) {
-			int[] consecutiveArray = generateArray(arrayLength);
-			testForBaseArray(consecutiveArray);
-		}
-	}
-
-	/**
-	 * The bulk of the testing. Creates a tester for each algorithm, and runs
-	 * `benchmark` on each of them for every permutation of the given integerList.
-	 * 
-	 * @param integerList original list to be permuted. does not have to be
-	 *                    consecutive integers.
-	 */
-	private static void testForBaseArray(int[] integerList) {
-		int [] permutationIndex = {1}; 
-
 		// only one sorter is needed throughout. Algorithms
 		// are expected to reset their own comparison counter.
 		Sorter sorter = new Sorter();
 
 		// list of all testers to be iterated through.
-		Tester[] testers = { new Tester(sorter::shakerSort, "Shaker sort"), new Tester(sorter::quickSort, "Quick sort"),
-				new Tester(sorter::mergeSort, "Merge sort"), new Tester(sorter::heapSort, "Heap sort"), };
+		Tester[] testers = {
+			new Tester(sorter::shakerSort, "Shaker Sort"),
+			new Tester(sorter::quickSort, "Quick Sort"),
+			new Tester(sorter::mergeSort, "Merge Sort"),
+			new Tester(sorter::heapSort, "Heap Sort"),
+		};
+
+		// enable CSV mode by default if more than 5 array lengths specified
+		boolean csv = (args.length > 5);
+
+		// Print the header for the CSV, if relevant
+		if(csv) {
+			System.out.printf("length,");
+
+			String[] suffixes = {"Average", "Best", "Worst"};
+			for(String suffix : suffixes) {
+				for(Tester tester : testers) {
+					System.out.printf("%s - %s,", tester.algorithmName, suffix);
+				}
+			}
+
+			System.out.printf("\n");
+		}
+
+		for (int arrayLength : arrayLengths) {
+			int[] consecutiveArray = generateArray(arrayLength);
+			testForBaseArray(consecutiveArray, testers, csv);
+		}
+	}
+
+	/**
+	 * Tests for an array, printing the results
+	 * 
+	 * @param integerList original list to be permuted. Doesn't have
+	 * 			to be sorted
+	 * @param testers list of testers to be called
+	 * @param csv whether to print in CSV mode
+	 */
+	private static void testForBaseArray(int[] integerList, Tester[] testers, boolean csv) {
+		int [] permutationIndex = {1}; 
+
+		// Reset all testers
+		for(Tester tester : testers) {
+			tester.resetState();
+		}
 
 		// go through every permutation, benchmarking each one along the way
 		permute(integerList, integerList.length, testers, permutationIndex);
 
-		// print out results at the end
-		for (Tester tester : testers) {
-			System.out.printf("\n\n- - - - - - %s - - - - - -\n", tester.algorithmName);
-			System.out.printf("Average comparisons: %s\n", tester.average);
-			System.out.printf("Best cases:  %s\n", printArray(tester.bestCases));
-			System.out.printf("Worst cases: %s\n", printArray(tester.worstCases));
+		// If printing as CSV
+		if(csv) {
+			System.out.printf("%d,", integerList.length);
+			// average
+			for (Tester tester : testers)
+				System.out.printf("%.3f,", tester.average);
+
+			// best
+			for (Tester tester : testers)
+				System.out.printf("%d,", tester.bestCases[outlierCount-1].operations);
+
+			// worst
+			for (Tester tester : testers)
+				System.out.printf("%d,", tester.worstCases[outlierCount-1].operations);
+
+			System.out.printf("\n");
+		} else {
+			// print out results at the end
+			for (Tester tester : testers) {
+				System.out.printf("\n\n- - - - - - %s - - - - - -\n", tester.algorithmName);
+				System.out.printf("Average comparisons: %s\n", tester.average);
+				System.out.printf("Best cases:  %s\n", printArray(tester.bestCases));
+				System.out.printf("Worst cases: %s\n", printArray(tester.worstCases));
+			}
 		}
 	}
 
