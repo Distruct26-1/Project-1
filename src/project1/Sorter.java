@@ -91,29 +91,34 @@ public class Sorter {
 
 	}
 
-	private int partition(int[] list, int lo, int hi) {
-		int i = lo;
-		int j = hi + 1;
-		int v = list[lo];
+	/**
+	 * Taken from https://www.geeksforgeeks.org/dsa/java-program-for-quicksort/
+	 * Divides an array so that the entire range is larger or
+	 * smaller than the element in list[high], depending on its size.
+	 * 
+	 * @param list list to partition
+	 * @param low lower bound of range partition
+	 * @param high upper bount of range to partition
+	 */
+	int partition(int list[], int low, int high)
+    {
+        int pivot = list[high]; 
+        int i = (low-1);
+        for (int j=low; j<high; j++) {
+            // If current element is smaller than or
+            // equal to pivot
+            // if (a[j] <= pivot)
+            if (!greaterThan(list[j], pivot))
+            {
+                i++;
+				swap(list, i, j);
+            }
+        }
 
-		while (true) {
-			while (lessThan(list[++i], v)) {
-				if (i == hi)
-					break;
-			}
-			while (lessThan(v, list[--j])) {
-				if (j == lo)
-					break;
-			}
-			if (i >= j) {
-				break;
-			}
-			swap(list, i, j);
-
-		}
-		swap(list, lo, j);
-		return j;
-	}
+		i++;
+		swap(list, i, high);
+        return i;
+    }
 
     /**
      * "Runner" for mergesort. Calls mergeSortRecursive.
