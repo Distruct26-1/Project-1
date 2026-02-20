@@ -38,18 +38,18 @@ public class Tester {
 	 * outliers.
 	 * 
 	 * @param list              the list to be sorted
-	 * @param permutationIndex number of previous benchmarks (1 if it's the second
+	 * @param permutationIndex  number of previous benchmarks (1 if it's the second
 	 *                          benchmark, 23 if it's the 24th...)
 	 * @return the comparisons used by the algorithm
 	 */
-	private int benchmark(int[] list, int[] permutationIndex) {
+	private int benchmark(int[] list, Integer permutationIndex) {
 		int comparisons = algorithm.apply(list.clone());
 		Result result = new Result(list, comparisons);
 
 		sortIntoList(bestCases, result, (result2, index) -> bestCases[index].compareTo(result2) > 0);
 		sortIntoList(worstCases, result, (result2, index) -> worstCases[index].compareTo(result2) < 0);
 
-		average = average + (comparisons - average) / permutationIndex[0];
+		average = average + (comparisons - average) / permutationIndex;
 		return comparisons;
 	}
 
@@ -129,7 +129,7 @@ public class Tester {
 	 *                    consecutive integers.
 	 */
 	private static void testForBaseArray(int[] integerList) {
-		int [] permutationIndex = {1}; 
+		Integer permutationIndex = 1; 
 
 		// only one sorter is needed throughout. Algorithms
 		// are expected to reset their own comparison counter.
@@ -201,7 +201,7 @@ public class Tester {
 	 * @param permutationIndex counter keeps track of what permutation we are on
 	 *                           for averaging
 	 */
-	private static void permute(int[] list, int size, Tester[] testers, int[] permutationIndex) {
+	private static void permute(int[] list, int size, Tester[] testers, Integer permutationIndex) {
 		// base case since Heap's algorithm is based on recursion
 		if (size == 1) {
 			// no further work needs to be done. test on all sorters. this is
@@ -210,7 +210,7 @@ public class Tester {
 			for (Tester tester : testers) {
 				tester.benchmark(list.clone(), permutationIndex);
 			}
-			permutationIndex[0]++;
+			permutationIndex++;
 			return;
 		}
 
