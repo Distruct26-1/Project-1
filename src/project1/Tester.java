@@ -186,7 +186,7 @@ public class Tester {
 			// so that we don't need to store all permutations. I will still
 			// be able to have data to do a graph for the report based on this.
 			for (Tester tester : testers) {
-				tester.benchmark(list);
+				tester.benchmark(list.clone());
 			}
 			return;
 		}
