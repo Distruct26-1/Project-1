@@ -25,10 +25,10 @@
 
 ## 4. Team Report Preparation
 
-- [ ] Write Introduction, Methods, Results, Analysis, and Conclusion
-- [ ] Insert clearly labeled data tables
-- [ ] Add Lessons Learned and Sources
-- [ ] Export final report as PDF
+- [X] Write Introduction, Methods, Results, Analysis, and Conclusion
+- [X] Insert clearly labeled data tables
+- [X] Add Lessons Learned and Sources
+- [X] Export final report as PDF
 
 ## 5. README & Deliverables
 
@@ -38,16 +38,16 @@
 
 ## 6. Screencast Video
 
-- [ ] Show project structure and key files
-- [ ] Explain permutation generator and comparison counting
-- [ ] Demonstrate a live run for one n value
-- [ ] Summarize conclusions
-- [ ] Ensure all team members participate
-- [ ] Keep video length under 10 minutes
+- [X] Show project structure and key files
+- [X] Explain permutation generator and comparison counting
+- [X] Demonstrate a live run for one n value
+- [X] Summarize conclusions
+- [X] Ensure all team members participate
+- [X] Keep video length under 10 minutes
 
 ## 7. Final Submission
 
-- [ ] Upload team report separately (PDF/DOCX)
-- [ ] Upload team code .zip with code, /docs, README, CONTRIBUTIONS.md, and data files
-- [ ] Upload or link screencast video
-- [ ] Confirm Weekly Reports and Peer Review submitted separately
+- [X] Upload team report separately (PDF/DOCX)
+- [X] Upload team code .zip with code, /docs, README, CONTRIBUTIONS.md, and data files
+- [X] Upload or link screencast video
+- [X] Confirm Weekly Reports and Peer Review submitted separately
